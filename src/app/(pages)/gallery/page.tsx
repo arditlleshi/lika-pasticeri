@@ -1,13 +1,13 @@
 'use client';
 
 import { Search } from "lucide-react";
-import { useRef, useState, useEffect, useMemo } from "react";
+import { useRef, useState, useEffect, useMemo, Suspense } from "react";
 import { cakeSubcategories, products, categoryMapping, categories } from "../../../data/gallery-data";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Product } from "../../../data/types";
 
-export default function GalleryContent() {
+function GalleryContent() {
   const router = useRouter();
   const searchParams = useSearchParams()
   const categoryFromParams = searchParams.get('category')
@@ -235,5 +235,13 @@ export default function GalleryContent() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function GalleryPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <GalleryContent />
+    </Suspense>
   );
 }

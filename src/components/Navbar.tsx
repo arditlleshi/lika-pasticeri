@@ -1,14 +1,15 @@
 'use client';
 
+import { Menu, ShoppingBag, X } from "lucide-react";
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Image from 'next/image';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import logo from "../assets/logo/red-logo.png";
-import { Menu, ShoppingBag, X } from "lucide-react";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = usePathname();
+  const ref = useRef<HTMLDivElement>(null);
 
   const isActive = (path: string) => {
     return location === path;
@@ -22,24 +23,27 @@ const Navbar = () => {
     { path: "/contact-us", label: "Kontakt" },
   ];
 
-  const handleLinkClick = (path: string) => {
-    if (path === location) {
+  const handleLinkClick = () => {
+    if (ref.current) {
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth'
       });
     }
     setIsOpen(false);
   };
 
   return (
-    <nav className="fixed z-50 w-full bg-white/80 shadow-lg backdrop-blur-md">
+    <nav
+      ref={ref}
+      className="fixed z-50 w-full bg-white/80 shadow-lg backdrop-blur-md">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <Link
             href="/"
+            scroll={false}
             className="flex items-center"
-            onClick={() => handleLinkClick("/")}>
+            onClick={handleLinkClick}>
             <Image src={logo} alt="Pastiçeri Lika" className="h-12 w-52" />
             {/* Uncomment and customize if needed
             <div className="bg-gradient-to-r from-rose-600 to-rose-500 p-2 rounded-lg">
@@ -58,7 +62,8 @@ const Navbar = () => {
                 <Link
                   key={path}
                   href={path}
-                  onClick={() => handleLinkClick(path)}
+                  scroll={false}
+                  onClick={handleLinkClick}
                   className={`${
                     isActive(path)
                       ? "bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-transparent"
@@ -98,7 +103,7 @@ const Navbar = () => {
               <Link
                 key={path}
                 href={path}
-                onClick={() => handleLinkClick(path)}
+                onClick={handleLinkClick}
                 className={`block px-3 py-2 ${
                   isActive(path)
                     ? "bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-transparent"

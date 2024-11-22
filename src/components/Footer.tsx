@@ -50,7 +50,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <Link
-                  href="/pasticeri-lika"
+                  href="/"
                   className={`transition-colors hover:text-rose-500 ${pathname == "/pasticeri-lika" ? "text-rose-500" : "text-gray-300"}`}
                 >
                   Kreu
@@ -58,15 +58,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/pasticeri-lika/our-products"
-                  className={`transition-colors hover:text-rose-500 ${pathname == "/pasticeri-lika/our-products" ? "text-rose-500" : "text-gray-300"}`}
-                >
-                  Produktet Tona
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/pasticeri-lika/gallery"
+                  href="/gallery"
                   className={`transition-colors hover:text-rose-500 ${pathname == "/pasticeri-lika/gallery" ? "text-rose-500" : "text-gray-300"}`}
                 >
                   Galeria
@@ -74,7 +66,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/pasticeri-lika/about-us"
+                  href="/about-us"
                   className={`transition-colors hover:text-rose-500 ${pathname == "/pasticeri-lika/about-us" ? "text-rose-500" : "text-gray-300"}`}
                 >
                   Rreth Nesh
@@ -82,7 +74,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/pasticeri-lika/contact-us"
+                  href="/contact-us"
                   className={`transition-colors hover:text-rose-500 ${pathname == "/pasticeri-lika/contact-us" ? "text-rose-500" : "text-gray-300"}`}
                 >
                   Kontakt

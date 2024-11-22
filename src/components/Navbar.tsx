@@ -16,7 +16,6 @@ const Navbar = () => {
 
   const navLinks = [
     { path: "/", label: "Kreu" },
-    { path: "/our-products", label: "Produktet Tona" },
     { path: "/gallery", label: "Galeria" },
     { path: "/bar-menu", label: "Bar Menu" },
     { path: "/about-us", label: "Rreth Nesh" },

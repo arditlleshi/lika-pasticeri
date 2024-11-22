@@ -3,54 +3,54 @@
 import { Search } from "lucide-react";
 import { useRef, useState, useEffect, useMemo } from "react";
 import { cakeSubcategories, products, categoryMapping, categories } from "../../../data/gallery-data";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { Product } from "../../../data/types";
 
-export default function GalleryContent({ params }: { params: { category: string, subcategory: string } }) {
-  const searchParams = params;
+export default function GalleryContent() {
   const router = useRouter();
-  const categoryFromParams = searchParams.category;
+  const searchParams = useSearchParams()
+  const categoryFromParams = searchParams.get('category')
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const productsGridRef = useRef<HTMLDivElement>(null);
 
-  // Initialize windowWidth only on the client
-  const [windowWidth, setWindowWidth] = useState<number>(
-    typeof window !== "undefined" ? window.innerWidth : 1200
-  );
+  // // Initialize windowWidth only on the client
+  // const [windowWidth, setWindowWidth] = useState<number>(
+  //   typeof window !== "undefined" ? window.innerWidth : 1200
+  // );
 
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // useEffect(() => {
+  //   const handleResize = () => setWindowWidth(window.innerWidth);
+  //   window.addEventListener('resize', handleResize);
+  //   return () => window.removeEventListener('resize', handleResize);
+  // }, []);
 
   // Determine if the current screen is large
-  const isLargeScreen = windowWidth > 1024;
+  // const isLargeScreen = windowWidth > 1024;
 
   // Determine if the selected category has subcategories
-  const hasSubcategories = selectedCategory === "Cakes";
+  // const hasSubcategories = selectedCategory === "Cakes";
 
   // Calculate header height based on screen size and subcategories
-  const headerHeight = isLargeScreen
-    ? (hasSubcategories ? 197.6 : 150)
-    : (hasSubcategories ? 260 : 210);
+  // const headerHeight = isLargeScreen
+  //   ? (hasSubcategories ? 197.6 : 150)
+  //   : (hasSubcategories ? 260 : 210);
 
   // Helper function to scroll to the products grid
-  const scrollToProductsGrid = () => {
-    if (productsGridRef.current) {
-      const elementRect = productsGridRef.current.getBoundingClientRect();
-      const absoluteElementTop = elementRect.top + window.pageYOffset;
-      const offsetPosition = absoluteElementTop - headerHeight;
+  // const scrollToProductsGrid = () => {
+  //   if (productsGridRef.current) {
+  //     const elementRect = productsGridRef.current.getBoundingClientRect();
+  //     const absoluteElementTop = elementRect.top + window.pageYOffset;
+  //     const offsetPosition = absoluteElementTop - headerHeight;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+  //     window.scrollTo({
+  //       top: offsetPosition,
+  //       behavior: "smooth",
+  //     });
+  //   }
+  // };
 
   // Effect to handle category changes from URL
   useEffect(() => {
@@ -59,7 +59,7 @@ export default function GalleryContent({ params }: { params: { category: string,
       if (mappedCategory && categories.includes(mappedCategory)) {
         setSelectedCategory(mappedCategory);
         setSelectedSubcategory("");
-        scrollToProductsGrid();
+        // scrollToProductsGrid();
       } else {
         setSelectedCategory("All");
         setSelectedSubcategory("");
@@ -85,7 +85,7 @@ export default function GalleryContent({ params }: { params: { category: string,
 
     router.push(`/gallery?${params.toString()}`);
 
-    scrollToProductsGrid();
+    // scrollToProductsGrid();
   };
 
   // Handler for subcategory change
@@ -99,12 +99,12 @@ export default function GalleryContent({ params }: { params: { category: string,
     }
     router.push(`/gallery?${params.toString()}`);
 
-    scrollToProductsGrid();
+    // scrollToProductsGrid();
   };
 
   // Effect to handle subcategory from URL (optional)
   useEffect(() => {
-    const subcategoryFromParams = searchParams.subcategory;
+    const subcategoryFromParams = searchParams.get('subcategory');
     if (
       categoryFromParams &&
       categoryMapping[categoryFromParams] === selectedCategory &&
@@ -181,7 +181,7 @@ export default function GalleryContent({ params }: { params: { category: string,
           </div>
 
           {/* Subcategories for Cakes */}
-          {hasSubcategories && (
+          {cakeSubcategories && (
             <div className="mt-4 flex gap-2 overflow-x-auto">
               {cakeSubcategories[selectedCategory]?.map((subcategory) => (
                 <button

@@ -1,11 +1,67 @@
 import { Suspense } from "react";
-import GalleryClient from "./GalleryClient";
+import { categories, products } from "@/data/gallery-data";
+import { Product } from "@/data/types";
+import GalleryGrid from "./GalleryGrid";
+import GalleryFilters from "./GalleryFilters";
 
-export default function GalleryPage() {
+interface GalleryPageProps {
+  searchParams: Promise<{
+    category?: string;
+    subcategory?: string;
+    search?: string;
+  }>;
+}
+
+export default async function GalleryPage({
+  searchParams,
+}: GalleryPageProps) {
+  // Await searchParams
+  const params = await searchParams;
+  
+  // Get params after resolution
+  const categoryFromParams = params.category;
+  const subcategoryFromParams = params.subcategory;
+  const searchQuery = params.search || "";
+
+  // Get selected category
+  const selectedCategory = categoryFromParams && categories.includes(categoryFromParams)
+    ? categoryFromParams
+    : "All";
+
+  // Get subcategories for selected category
+  const getSubcategories = (category: string): string[] => {
+    const subcategoriesSet = new Set<string>();
+    products.forEach((product) => {
+      if (product.category === category && product.subcategory!.trim() !== "") {
+        subcategoriesSet.add(product.subcategory!);
+      }
+    });
+    return Array.from(subcategoriesSet);
+  };
+
+  const currentSubcategories = getSubcategories(selectedCategory);
+
+  // Get selected subcategory
+  const selectedSubcategory = subcategoryFromParams && 
+    currentSubcategories.includes(subcategoryFromParams)
+    ? subcategoryFromParams
+    : "";
+
+  // Filter products
+  const filteredProducts = products.filter((product: Product) => {
+    const categoryMatch =
+      selectedCategory === "All" || product.category === selectedCategory;
+    const subcategoryMatch =
+      !selectedSubcategory || product.subcategory === selectedSubcategory;
+    const searchMatch = searchQuery
+      ? product.name.toLowerCase().includes(searchQuery.toLowerCase())
+      : true;
+    return categoryMatch && subcategoryMatch && searchMatch;
+  });
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      {/* Server-rendered content */}
       <div className="bg-gradient-to-r from-rose-50 to-white">
         <div className="mx-auto max-w-7xl px-4 py-10">
           <h1 className="mb-4 font-serif text-4xl font-bold text-gray-900 md:text-5xl">
@@ -18,9 +74,20 @@ export default function GalleryPage() {
         </div>
       </div>
 
-      {/* Client Component */}
-      <Suspense fallback={<div className="py-20 text-center">Loading...</div>}>
-        <GalleryClient />
+      {/* Filters */}
+      <Suspense fallback={<div className="py-4 text-center">Loading filters...</div>}>
+        <GalleryFilters
+          categories={categories}
+          selectedCategory={selectedCategory}
+          subcategories={currentSubcategories}
+          selectedSubcategory={selectedSubcategory}
+          searchQuery={searchQuery}
+        />
+      </Suspense>
+
+      {/* Products Grid */}
+      <Suspense fallback={<div className="py-20 text-center">Loading products...</div>}>
+        <GalleryGrid products={filteredProducts} />
       </Suspense>
     </div>
   );

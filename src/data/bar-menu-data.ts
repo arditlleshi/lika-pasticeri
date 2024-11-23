@@ -1,4 +1,3 @@
-
 import { MenuBarItems, MenuBarCategory } from "./types";
 import { Coffee, Wine, Beer, Milk } from "lucide-react";
 

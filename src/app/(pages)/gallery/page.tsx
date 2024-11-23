@@ -3,7 +3,7 @@ import GalleryClient from "./GalleryClient";
 
 export default function GalleryPage() {
   return (
-    <div  className="pt-20">
+    <div className="pt-20">
       {/* Hero Section */}
       {/* Server-rendered content */}
       <div className="bg-gradient-to-r from-rose-50 to-white">
@@ -19,7 +19,7 @@ export default function GalleryPage() {
       </div>
 
       {/* Client Component */}
-      <Suspense fallback={<div className="text-center py-20">Loading...</div>}>
+      <Suspense fallback={<div className="py-20 text-center">Loading...</div>}>
         <GalleryClient />
       </Suspense>
     </div>

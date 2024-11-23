@@ -10,7 +10,7 @@ function HeroImages() {
   useEffect(() => {
     const heroInterval = setInterval(() => {
       setCurrentImageIndex((prevIndex) =>
-        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
+        prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1,
       );
     }, 5000);
 

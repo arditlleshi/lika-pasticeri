@@ -1,16 +1,18 @@
 // src/components/CategoryNavigation.tsx
 
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 import { menuBarCategories } from "../../../data/bar-menu-data";
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 interface CategoryNavigationProps {
   selectedCategoryId: string;
 }
 
-export default function CategoryNavigation({ selectedCategoryId }: CategoryNavigationProps) {
+export default function CategoryNavigation({
+  selectedCategoryId,
+}: CategoryNavigationProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -37,11 +39,12 @@ export default function CategoryNavigation({ selectedCategoryId }: CategoryNavig
     if (menuItemsElement) {
       const headerOffset = 150; // Adjust based on your fixed header's height
       const elementPosition = menuItemsElement.getBoundingClientRect().top;
-      const offsetPosition = window.pageYOffset + elementPosition - headerOffset;
+      const offsetPosition =
+        window.pageYOffset + elementPosition - headerOffset;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
 
@@ -49,9 +52,9 @@ export default function CategoryNavigation({ selectedCategoryId }: CategoryNavig
     const button = categoryRefs.current[index];
     if (button && categoryNavRef.current) {
       button.scrollIntoView({
-        behavior: 'smooth',
-        inline: 'center',
-        block: 'nearest',
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
       });
     }
   };
@@ -60,14 +63,16 @@ export default function CategoryNavigation({ selectedCategoryId }: CategoryNavig
    * Effect to center the selected category button on initial load
    */
   useEffect(() => {
-    const index = menuBarCategories.findIndex(cat => cat.id === selectedCategoryId);
+    const index = menuBarCategories.findIndex(
+      (cat) => cat.id === selectedCategoryId,
+    );
     if (index !== -1) {
       const button = categoryRefs.current[index];
       if (button && categoryNavRef.current) {
         button.scrollIntoView({
-          behavior: 'smooth',
-          inline: 'center',
-          block: 'nearest',
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
         });
       }
     }

@@ -26,11 +26,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <div className="min-h-screen bg-white">
           <Navbar />
           <main>{children}</main>
@@ -42,12 +42,14 @@ export default function RootLayout({
           <div className="flex flex-col gap-3">
             <button
               // onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+              className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+            >
               <svg
                 className="w-5 h-5 text-gray-600 group-hover:text-rose-600 transition-colors duration-300"
                 fill="none"
                 stroke="currentColor"
-                viewBox="0 0 24 24">
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"

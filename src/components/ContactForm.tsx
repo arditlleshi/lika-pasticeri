@@ -1,9 +1,8 @@
-'use client'
+"use client";
 
 import { Send } from "lucide-react";
 
-
-export default function ContactForm(){
+export default function ContactForm() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
@@ -13,7 +12,8 @@ export default function ContactForm(){
       <div>
         <label
           htmlFor="fullName"
-          className="mb-1 block text-sm font-medium text-gray-700">
+          className="mb-1 block text-sm font-medium text-gray-700"
+        >
           Emri i Plotë
         </label>
         <input
@@ -28,7 +28,8 @@ export default function ContactForm(){
       <div>
         <label
           htmlFor="email"
-          className="mb-1 block text-sm font-medium text-gray-700">
+          className="mb-1 block text-sm font-medium text-gray-700"
+        >
           Adresa e Email-it
         </label>
         <input
@@ -43,7 +44,8 @@ export default function ContactForm(){
       <div>
         <label
           htmlFor="phone"
-          className="mb-1 block text-sm font-medium text-gray-700">
+          className="mb-1 block text-sm font-medium text-gray-700"
+        >
           Numri i Telefonit
         </label>
         <input
@@ -57,7 +59,8 @@ export default function ContactForm(){
       <div>
         <label
           htmlFor="message"
-          className="mb-1 block text-sm font-medium text-gray-700">
+          className="mb-1 block text-sm font-medium text-gray-700"
+        >
           Mesazhi
         </label>
         <textarea
@@ -71,7 +74,8 @@ export default function ContactForm(){
       </div>
       <button
         type="submit"
-        className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-rose-600 to-rose-500 px-6 py-2 text-white shadow-lg transition-all duration-300 hover:from-rose-700 hover:to-rose-600 hover:shadow-xl">
+        className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-rose-600 to-rose-500 px-6 py-2 text-white shadow-lg transition-all duration-300 hover:from-rose-700 hover:to-rose-600 hover:shadow-xl"
+      >
         Dërgo Mesazhin
         <Send className="h-5 w-5" />
       </button>

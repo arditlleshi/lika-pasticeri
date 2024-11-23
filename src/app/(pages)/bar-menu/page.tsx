@@ -8,12 +8,10 @@ interface BarMenuPageProps {
   searchParams: Promise<{ category?: string | string[] }>;
 }
 
-export default async function BarMenuPage({
-  searchParams,
-}: BarMenuPageProps) {
+export default async function BarMenuPage({ searchParams }: BarMenuPageProps) {
   // Await the entire searchParams object
   const params = await searchParams;
-  
+
   // Now safely access the category after searchParams is resolved
   const selectedCategoryId = Array.isArray(params.category)
     ? params.category[0]
@@ -53,9 +51,7 @@ export default async function BarMenuPage({
       </div>
 
       {/* Category Navigation */}
-      <CategoryNavigation
-        selectedCategoryId={selectedCategory.id.toString()}
-      />
+      <CategoryNavigation selectedCategoryId={selectedCategory.id.toString()} />
 
       {/* Menu Items */}
       <div id="menu-items" className="max-w-7xl mx-auto px-4 py-12">

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const pathname = usePathname();
-  
+
   return (
     <footer className="bg-footer-gradient text-white">
       {/* Main Footer */}

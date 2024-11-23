@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import { Menu, ShoppingBag, X } from "lucide-react";
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import logo from "../assets/logo/red-logo.png";
 const Navbar = () => {
@@ -27,7 +27,7 @@ const Navbar = () => {
     if (ref.current) {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
     setIsOpen(false);
@@ -36,14 +36,16 @@ const Navbar = () => {
   return (
     <nav
       ref={ref}
-      className="fixed z-50 w-full bg-white/80 shadow-lg backdrop-blur-md">
+      className="fixed z-50 w-full bg-white/80 shadow-lg backdrop-blur-md"
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <Link
             href="/"
             scroll={false}
             className="flex items-center"
-            onClick={handleLinkClick}>
+            onClick={handleLinkClick}
+          >
             <Image src={logo} alt="Pastiçeri Lika" className="h-12 w-52" />
           </Link>
 
@@ -60,7 +62,8 @@ const Navbar = () => {
                     isActive(path)
                       ? "bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-transparent"
                       : "text-gray-900"
-                  } group relative transition-colors hover:text-rose-600`}>
+                  } group relative transition-colors hover:text-rose-600`}
+                >
                   {label}
                   <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-rose-600 to-rose-500 transition-all duration-300 ease-out group-hover:w-full"></div>
                 </Link>
@@ -72,7 +75,8 @@ const Navbar = () => {
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-900">
+              className="text-gray-900"
+            >
               {isOpen ? (
                 <X className="h-6 w-6" />
               ) : (
@@ -96,7 +100,8 @@ const Navbar = () => {
                   isActive(path)
                     ? "bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-transparent"
                     : "text-gray-900"
-                } hover:text-rose-600`}>
+                } hover:text-rose-600`}
+              >
                 {label}
               </Link>
             ))}

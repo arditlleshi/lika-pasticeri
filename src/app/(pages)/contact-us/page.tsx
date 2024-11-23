@@ -2,8 +2,6 @@ import ContactForm from "@/components/ContactForm";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 export default function Contact() {
-  
-
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -57,7 +55,8 @@ export default function Contact() {
                     </h3>
                     <a
                       href="mailto:info@pasticerilika.al"
-                      className="text-gray-600 hover:text-rose-600">
+                      className="text-gray-600 hover:text-rose-600"
+                    >
                       info@pasticerilika.al
                     </a>
                   </div>

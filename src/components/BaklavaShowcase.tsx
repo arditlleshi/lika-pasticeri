@@ -13,7 +13,7 @@ function BaklavaShowcase() {
       setIsTransitioning(true);
       setTimeout(() => {
         setCurrentBaklavaIndex((prevIndex) =>
-          prevIndex === baklavaImages.length - 1 ? 0 : prevIndex + 1
+          prevIndex === baklavaImages.length - 1 ? 0 : prevIndex + 1,
         );
         setTimeout(() => {
           setIsTransitioning(false);

@@ -30,7 +30,6 @@ const GalleryClient: React.FC = () => {
       window.scrollTo({ top: 200, behavior: "smooth" });
     }
   };
-  
 
   /**
    * Function to retrieve unique subcategories based on selected category
@@ -163,7 +162,7 @@ const GalleryClient: React.FC = () => {
    */
   const currentSubcategories = useMemo(
     () => getSubcategories(selectedCategory),
-    [selectedCategory]
+    [selectedCategory],
   );
 
   return (
@@ -202,7 +201,7 @@ const GalleryClient: React.FC = () => {
 
           {/* Subcategories */}
           {currentSubcategories.length > 0 && (
-            <div className="mt-4 pb-2 lg:pb-0 flex gap-2 overflow-x-auto">
+            <div className="mt-4 flex gap-2 overflow-x-auto pb-2 lg:pb-0">
               {currentSubcategories.map((subcategory) => (
                 <SubcategoryButton
                   key={subcategory}
@@ -223,7 +222,8 @@ const GalleryClient: React.FC = () => {
             filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="group overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                className="group overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
                 <div className="relative aspect-square overflow-hidden">
                   <Image
                     src={product.image}

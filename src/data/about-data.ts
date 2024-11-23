@@ -19,7 +19,7 @@ export const locations = [
     mapUrl: "https://maps.google.com/?q=41.3275,19.8187",
   },
   {
-    name: "Pallatet Çabej", 
+    name: "Pallatet Çabej",
     description:
       "E vendosur në lagjen më të njohur të Tiranës, kjo vendndodhje moderne kombinon preferencat tradicionale me kulturën bashkëkohore të kafenesë.",
     image:
@@ -50,11 +50,13 @@ export const timeline = [
   {
     year: "2015",
     title: "Inovacioni",
-    description: "Prezantuam pastërtitë moderne europiane duke mbajtur recetat tradicionale",
+    description:
+      "Prezantuam pastërtitë moderne europiane duke mbajtur recetat tradicionale",
   },
   {
     year: "2020",
     title: "Kapitali i Ri",
-    description: "Hapur vendndodhja jonë e tretë me një kuzhinë me koncept të hapur",
+    description:
+      "Hapur vendndodhja jonë e tretë me një kuzhinë me koncept të hapur",
   },
 ];

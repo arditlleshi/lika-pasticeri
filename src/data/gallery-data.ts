@@ -1,17 +1,5 @@
 import { Product } from "./types";
 
-export const cakeSubcategories: { [key: string]: string[] } = {
-  Frozen: ["Ice Cream Cakes", "Frozen Yogurt Cakes", "Gelato Cakes"],
-  Traditional: ["Chocolate", "Vanilla", "Red Velvet", "Carrot"],
-  Premium: ["Wedding Cakes", "Custom Design", "Special Occasion"],
-};
-
-export const categoryMapping: { [key: string]: string } = {
-  "Pastritë Tradicionale": "Pastries",
-  "Bukë Artisanale": "Breads",
-  "Torta Premium": "Cakes",
-};
-
 export const categories: string[] = [
   "All",
   "Breads",
@@ -57,7 +45,7 @@ export const products: Product[] = [
     id: 4,
     name: "Traditional Vanilla Cake",
     price: "2800 LEK",
-    category: "Cakes",
+    category: "Cookies",
     subcategory: "Traditional",
     description: "Classic vanilla cake with a hint of sweetness",
     image:

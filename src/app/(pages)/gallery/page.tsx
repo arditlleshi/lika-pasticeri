@@ -1,122 +1,206 @@
+// components/GalleryContent.tsx
+
 'use client';
 
 import { Search } from "lucide-react";
 import { useRef, useState, useEffect, useMemo, Suspense } from "react";
-import { cakeSubcategories, products, categoryMapping, categories } from "../../../data/gallery-data";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import { Product } from "../../../data/types";
+import { categories, products } from "@/data/gallery-data";
+import { Product } from "@/data/types";
 
-function GalleryContent() {
+/**
+ * Reusable Button Component for Categories and Subcategories
+ */
+interface FilterButtonProps {
+  label: string;
+  isSelected: boolean;
+  onClick: () => void;
+}
+
+const FilterButton: React.FC<FilterButtonProps> = ({ label, isSelected, onClick }) => (
+  <button
+    onClick={onClick}
+    className={`whitespace-nowrap rounded-full px-4 py-1 transition-all duration-300 ${
+      isSelected
+        ? "bg-rose-600 text-white shadow-lg"
+        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+    }`}
+    aria-pressed={isSelected}
+    aria-label={label}
+  >
+    {label}
+  </button>
+);
+
+/**
+ * Subcategory Button Component
+ */
+interface SubcategoryButtonProps {
+  label: string;
+  isSelected: boolean;
+  onClick: () => void;
+}
+
+const SubcategoryButton: React.FC<SubcategoryButtonProps> = ({ label, isSelected, onClick }) => (
+  <button
+    onClick={onClick}
+    className={`whitespace-nowrap rounded-full px-3 py-1 text-sm transition-all duration-300 ${
+      isSelected
+        ? "bg-rose-200 text-rose-800 shadow-md"
+        : "bg-rose-50 text-rose-600 hover:bg-rose-100"
+    }`}
+    aria-pressed={isSelected}
+    aria-label={label}
+  >
+    {label}
+  </button>
+);
+
+/**
+ * GalleryContent Component
+ */
+const GalleryContent: React.FC = () => {
   const router = useRouter();
-  const searchParams = useSearchParams()
-  const categoryFromParams = searchParams.get('category')
+  const searchParams = useSearchParams();
+
+  const categoryFromParams = searchParams.get('category');
+  const subcategoryFromParams = searchParams.get('subcategory');
+
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [selectedSubcategory, setSelectedSubcategory] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
+
   const productsGridRef = useRef<HTMLDivElement>(null);
 
-  // // Initialize windowWidth only on the client
-  // const [windowWidth, setWindowWidth] = useState<number>(
-  //   typeof window !== "undefined" ? window.innerWidth : 1200
-  // );
+  /**
+   * Scroll to Products Grid
+   */
+  const scrollToProductsGrid = () => {
+    if (productsGridRef.current) {
+      productsGridRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
-  // useEffect(() => {
-  //   const handleResize = () => setWindowWidth(window.innerWidth);
-  //   window.addEventListener('resize', handleResize);
-  //   return () => window.removeEventListener('resize', handleResize);
-  // }, []);
+  /**
+   * Function to retrieve unique subcategories based on selected category
+   */
+  const getSubcategories = (category: string): string[] => {
+    const subcategoriesSet = new Set<string>();
+    products.forEach((product) => {
+      if (
+        product.category === category &&
+        product.subcategory!.trim() !== ""
+      ) {
+        subcategoriesSet.add(product.subcategory!);
+      }
+    });
+    return Array.from(subcategoriesSet);
+  };
 
-  // Determine if the current screen is large
-  // const isLargeScreen = windowWidth > 1024;
-
-  // Determine if the selected category has subcategories
-  // const hasSubcategories = selectedCategory === "Cakes";
-
-  // Calculate header height based on screen size and subcategories
-  // const headerHeight = isLargeScreen
-  //   ? (hasSubcategories ? 197.6 : 150)
-  //   : (hasSubcategories ? 260 : 210);
-
-  // Helper function to scroll to the products grid
-  // const scrollToProductsGrid = () => {
-  //   if (productsGridRef.current) {
-  //     const elementRect = productsGridRef.current.getBoundingClientRect();
-  //     const absoluteElementTop = elementRect.top + window.pageYOffset;
-  //     const offsetPosition = absoluteElementTop - headerHeight;
-
-  //     window.scrollTo({
-  //       top: offsetPosition,
-  //       behavior: "smooth",
-  //     });
-  //   }
-  // };
-
-  // Effect to handle category changes from URL
+  /**
+   * Effect to handle category changes from URL
+   */
   useEffect(() => {
     if (categoryFromParams) {
-      const mappedCategory = categoryMapping[categoryFromParams];
-      if (mappedCategory && categories.includes(mappedCategory)) {
-        setSelectedCategory(mappedCategory);
+      const decodedCategory = decodeURIComponent(categoryFromParams);
+      if (categories.includes(decodedCategory)) {
+        setSelectedCategory(decodedCategory);
         setSelectedSubcategory("");
-        // scrollToProductsGrid();
+        scrollToProductsGrid();
       } else {
         setSelectedCategory("All");
         setSelectedSubcategory("");
       }
+    } else {
+      setSelectedCategory("All");
+      setSelectedSubcategory("");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryFromParams]);
 
-  // Handler for category change via buttons
+  /**
+   * Effect to handle subcategory changes from URL
+   */
+  useEffect(() => {
+    if (
+      categoryFromParams &&
+      decodeURIComponent(categoryFromParams) === selectedCategory &&
+      subcategoryFromParams
+    ) {
+      const decodedSubcategory = decodeURIComponent(subcategoryFromParams);
+      if (getSubcategories(selectedCategory).includes(decodedSubcategory)) {
+        setSelectedSubcategory(decodedSubcategory);
+        scrollToProductsGrid();
+        return;
+      }
+    }
+    setSelectedSubcategory("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [subcategoryFromParams, categoryFromParams, selectedCategory]);
+
+  /**
+   * Handler for category change via buttons
+   */
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
     setSelectedSubcategory("");
+
     const params = new URLSearchParams();
 
     if (category !== "All") {
-      const displayCategory = Object.keys(categoryMapping).find(
-        (key) => categoryMapping[key] === category,
-      );
-      if (displayCategory) {
-        params.set("category", displayCategory);
-      }
+      params.set("category", encodeURIComponent(category));
+    }
+
+    // Preserve search query if applicable
+    if (searchQuery.trim()) {
+      params.set("search", encodeURIComponent(searchQuery.trim()));
     }
 
     router.push(`/gallery?${params.toString()}`);
-
-    // scrollToProductsGrid();
+    scrollToProductsGrid();
   };
 
-  // Handler for subcategory change
+  /**
+   * Handler for subcategory change
+   */
   const handleSubcategoryChange = (subcategory: string) => {
     setSelectedSubcategory(subcategory);
+
     const params = new URLSearchParams(searchParams.toString());
+
     if (subcategory) {
-      params.set("subcategory", subcategory);
+      params.set("subcategory", encodeURIComponent(subcategory));
     } else {
       params.delete("subcategory");
     }
-    router.push(`/gallery?${params.toString()}`);
 
-    // scrollToProductsGrid();
+    // Preserve category
+    if (selectedCategory !== "All") {
+      params.set("category", encodeURIComponent(selectedCategory));
+    }
+
+    // Preserve search query if applicable
+    if (searchQuery.trim()) {
+      params.set("search", encodeURIComponent(searchQuery.trim()));
+    }
+
+    router.push(`/gallery?${params.toString()}`);
+    scrollToProductsGrid();
   };
 
-  // Effect to handle subcategory from URL (optional)
-  useEffect(() => {
-    const subcategoryFromParams = searchParams.get('subcategory');
-    if (
-      categoryFromParams &&
-      categoryMapping[categoryFromParams] === selectedCategory &&
-      subcategoryFromParams &&
-      cakeSubcategories[selectedCategory]?.includes(subcategoryFromParams)
-    ) {
-      setSelectedSubcategory(subcategoryFromParams);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams, categoryFromParams, selectedCategory]);
+  /**
+   * Handler for search input change
+   */
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    // Optionally, implement debouncing here
+  };
 
-  // Filter products based on selected filters
+  /**
+   * Filter products based on selected filters
+   */
   const filteredProducts = useMemo(() => {
     return products.filter((product: Product) => {
       const categoryMatch =
@@ -129,6 +213,14 @@ function GalleryContent() {
       return categoryMatch && subcategoryMatch && searchMatch;
     });
   }, [selectedCategory, selectedSubcategory, searchQuery]);
+
+  /**
+   * Retrieve subcategories for the current selected category
+   */
+  const currentSubcategories = useMemo(
+    () => getSubcategories(selectedCategory),
+    [selectedCategory]
+  );
 
   return (
     <div className="pt-20">
@@ -157,8 +249,9 @@ function GalleryContent() {
                   type="text"
                   placeholder="Search gallery..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={handleSearchChange}
                   className="w-full rounded-full border py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-rose-500"
+                  aria-label="Search gallery"
                 />
               </div>
             </div>
@@ -166,34 +259,26 @@ function GalleryContent() {
             {/* Category Buttons */}
             <div className="flex w-full gap-2 overflow-x-auto pb-2 md:w-auto lg:pb-0">
               {categories.map((category) => (
-                <button
+                <FilterButton
                   key={category}
+                  label={category}
+                  isSelected={selectedCategory === category}
                   onClick={() => handleCategoryChange(category)}
-                  className={`whitespace-nowrap rounded-full px-4 py-1 transition-all duration-300 ${
-                    selectedCategory === category
-                      ? "bg-rose-600 text-white shadow-lg"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}>
-                  {category}
-                </button>
+                />
               ))}
             </div>
           </div>
 
-          {/* Subcategories for Cakes */}
-          {cakeSubcategories && (
+          {/* Subcategories */}
+          {currentSubcategories.length > 0 && (
             <div className="mt-4 flex gap-2 overflow-x-auto">
-              {cakeSubcategories[selectedCategory]?.map((subcategory) => (
-                <button
+              {currentSubcategories.map((subcategory) => (
+                <SubcategoryButton
                   key={subcategory}
+                  label={subcategory}
+                  isSelected={selectedSubcategory === subcategory}
                   onClick={() => handleSubcategoryChange(subcategory)}
-                  className={`whitespace-nowrap rounded-full px-3 py-1 text-sm transition-all duration-300 ${
-                    selectedSubcategory === subcategory
-                      ? "bg-rose-200 text-rose-800 shadow-md"
-                      : "bg-rose-50 text-rose-600 hover:bg-rose-100"
-                  }`}>
-                  {subcategory}
-                </button>
+                />
               ))}
             </div>
           )}
@@ -207,13 +292,14 @@ function GalleryContent() {
             filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="group overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                className="group overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              >
                 <div className="relative aspect-square overflow-hidden">
                   <Image
                     src={product.image}
                     alt={product.name}
                     fill
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                     priority={false}
                   />
                 </div>
@@ -236,11 +322,11 @@ function GalleryContent() {
       </div>
     </div>
   );
-}
+};
 
 export default function GalleryPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="text-center py-20">Loading...</div>}>
       <GalleryContent />
     </Suspense>
   );

@@ -45,14 +45,6 @@ const Navbar = () => {
             className="flex items-center"
             onClick={handleLinkClick}>
             <Image src={logo} alt="Pastiçeri Lika" className="h-12 w-52" />
-            {/* Uncomment and customize if needed
-            <div className="bg-gradient-to-r from-rose-600 to-rose-500 p-2 rounded-lg">
-              <Cake className="h-8 w-8 text-white" />
-            </div>
-            <span className="ml-2 text-2xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-rose-500">
-              Pastiçeri Lika
-            </span>
-            */}
           </Link>
 
           {/* Desktop Navigation */}
@@ -73,10 +65,6 @@ const Navbar = () => {
                   <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-rose-600 to-rose-500 transition-all duration-300 ease-out group-hover:w-full"></div>
                 </Link>
               ))}
-              {/* <button className="flex items-center bg-gradient-to-r from-rose-700 to-rose-500 text-white px-6 py-2 rounded-full hover:from-rose-500 hover:to-rose-700 transition-all duration-300 shadow-lg hover:shadow-xl">
-                <ShoppingBag className="h-4 w-4 mr-2" />
-                Order Now
-              </button> */}
             </div>
           </div>
 

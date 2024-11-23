@@ -1,51 +1,29 @@
-"use client";
+// src/app/bar-menu/page.tsx
 
-import { useRef, useState } from "react";
 import { menuBarCategories, menuBarItems } from "../../../data/bar-menu-data";
 import Image from "next/image";
+import CategoryNavigation from "./CategoryNavigation";
 
-export default function BarMenu() {
-  const [selectedCategory, setSelectedCategory] =
-    useState<keyof typeof menuBarItems>("coffee");
-  const currentCategory = menuBarCategories.find(
-    (cat) => cat.id === selectedCategory
-  );
-  const menuItemsRef = useRef<HTMLDivElement>(null);
+interface BarMenuPageProps {
+  searchParams: Promise<{ category?: string | string[] }>;
+}
 
-  // Ref for the category navigation container
-  const categoryNavRef = useRef<HTMLDivElement>(null);
+export default async function BarMenuPage({
+  searchParams,
+}: BarMenuPageProps) {
+  // Await the entire searchParams object
+  const params = await searchParams;
+  
+  // Now safely access the category after searchParams is resolved
+  const selectedCategoryId = Array.isArray(params.category)
+    ? params.category[0]
+    : params.category || "coffee"; // Default category
 
-  // Array of refs for each category button
-  const categoryRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const selectedCategory =
+    menuBarCategories.find((cat) => cat.id === selectedCategoryId) ||
+    menuBarCategories[0]; // Fallback to first category if not found
 
-  const handleCategoryClick = (
-    categoryId: keyof typeof menuBarItems,
-    index: number
-  ) => {
-    setSelectedCategory(categoryId);
-
-    // Scroll to the menu items section
-    if (menuItemsRef.current) {
-      const headerOffset = 150;
-      const elementPosition = menuItemsRef.current.getBoundingClientRect().top;
-      const offsetPosition =
-        window.pageYOffset + elementPosition - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-
-    // Center the clicked category button horizontally
-    const button = categoryRefs.current[index];
-    if (button && categoryNavRef.current) {
-      button.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-    }
-  };
+  const currentCategoryItems = menuBarItems[selectedCategory.id];
 
   return (
     <div className="pt-20 min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -53,69 +31,40 @@ export default function BarMenu() {
       <div className="relative h-[50vh] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src={currentCategory!.image}
+            src={selectedCategory.image}
             loading="lazy"
             fill
-            alt={currentCategory!.name}
+            alt={selectedCategory.name}
             className="w-full h-full object-cover transition-all duration-700 transform"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40 backdrop-blur-[2px]" />
         </div>
         <div className="relative h-full max-w-7xl mx-auto px-4 flex flex-col justify-center">
           <span className="inline-block mb-4 px-4 py-1.5 bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium">
-            {currentCategory?.name} Menu
+            {selectedCategory.name} Menu
           </span>
           <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4 tracking-tight">
-            {currentCategory?.name}
+            {selectedCategory.name}
           </h1>
           <p className="text-lg md:text-xl text-gray-200 max-w-2xl font-light">
-            {currentCategory?.description}
+            {selectedCategory.description}
           </p>
         </div>
       </div>
 
       {/* Category Navigation */}
-      <div
-        ref={categoryNavRef}
-        className="sticky top-20 bg-white/80 backdrop-blur-md shadow-sm z-40 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex overflow-x-auto gap-3 py-4 hide-scrollbar">
-            {menuBarCategories.map(({ id, name, icon: Icon }, index) => (
-              <button
-                key={id}
-                ref={(el) => {
-                  if (el) {
-                    categoryRefs.current[index] = el;
-                  }
-                }}
-                onClick={() => handleCategoryClick(id, index)}
-                className={`group flex items-center gap-2 px-6 py-2.5 rounded-full whitespace-nowrap transition-all duration-300 ${
-                  selectedCategory === id
-                    ? "bg-gradient-to-r from-rose-600 to-rose-500 text-white shadow-lg shadow-rose-500/20"
-                    : "bg-white/80 text-gray-700 hover:bg-gray-100 hover:shadow-md"
-                }`}
-                aria-pressed={selectedCategory === id}>
-                <Icon
-                  className={`h-4 w-4 transition-transform duration-300 ${
-                    selectedCategory === id
-                      ? "scale-105"
-                      : "group-hover:scale-105"
-                  }`}
-                />
-                {name}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+      <CategoryNavigation
+        selectedCategoryId={selectedCategory.id.toString()}
+      />
 
       {/* Menu Items */}
-      <div ref={menuItemsRef} className="max-w-7xl mx-auto px-4 py-12">
+      <div id="menu-items" className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid gap-4">
-          {menuBarItems[selectedCategory].map((item, index) => (
+          {currentCategoryItems.map((item, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-500 hover:scale-[1.02] relative overflow-hidden">
+              className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-500 hover:scale-[1.02] relative overflow-hidden"
+            >
               <div className="absolute inset-0 bg-gradient-to-r from-rose-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="relative flex justify-between items-start gap-4">
                 <div className="flex-1">

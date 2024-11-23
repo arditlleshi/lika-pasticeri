@@ -127,7 +127,7 @@ export default function Home() {
                   </div>
                   <Link
                     href={`/gallery?category=${encodeURIComponent(
-                      category.name
+                      category.searchName
                     )}`}
                     className="inline-flex items-center text-rose-600 transition-colors hover:text-rose-700">
                     Shikoni të Gjitha Produktet{" "}

@@ -60,6 +60,7 @@ export const features = [
 export const categoryShowcase = [
   {
     name: "Ëmërtësia Tradicionale",
+    searchName: "Traditional",
     description:
       "I punuara me dashuri duke përdorur receta tradicionale shqiptare të kaluar nga brezi në brez",
     image: bakery1,
@@ -67,6 +68,7 @@ export const categoryShowcase = [
   },
   {
     name: "Bukë Artisanale",
+    searchName: "Cakes",
     description:
       "Bukë të freskëta, të krokëta dhe aromatike të pjekura çdo ditë me përbërës premium",
     image: bakery2,
@@ -74,6 +76,7 @@ export const categoryShowcase = [
   },
   {
     name: "Torta Premium",
+    searchName: "Premium",
     description:
       "Torta elegante dhe të shijshme perfekte për çdo rast të veçantë",
     image: bakery3,

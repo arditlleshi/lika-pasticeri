@@ -62,7 +62,6 @@ const GalleryClient: React.FC = () => {
       setSelectedCategory("All");
       setSelectedSubcategory("");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryFromParams]);
 
   /**
@@ -203,7 +202,7 @@ const GalleryClient: React.FC = () => {
 
           {/* Subcategories */}
           {currentSubcategories.length > 0 && (
-            <div className="mt-4 flex gap-2 overflow-x-auto">
+            <div className="mt-4 pb-2 lg:pb-0 flex gap-2 overflow-x-auto">
               {currentSubcategories.map((subcategory) => (
                 <SubcategoryButton
                   key={subcategory}
@@ -224,8 +223,7 @@ const GalleryClient: React.FC = () => {
             filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="group overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
+                className="group overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="relative aspect-square overflow-hidden">
                   <Image
                     src={product.image}

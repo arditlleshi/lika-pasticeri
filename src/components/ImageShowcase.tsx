@@ -1,28 +1,29 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { memo, useEffect, useState } from "react";
-import { baklavaImages } from "../data/home-data";
 
-function BaklavaShowcase() {
-  const [currentBaklavaIndex, setCurrentBaklavaIndex] = useState(0);
+function ImageShowcase({ images }: { images: { url: StaticImageData; alt: string }[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
-    const baklavaInterval = setInterval(() => {
+    if (!images || images.length === 0) return;
+
+    const interval = setInterval(() => {
       setIsTransitioning(true);
       setTimeout(() => {
-        setCurrentBaklavaIndex((prevIndex) =>
-          prevIndex === baklavaImages.length - 1 ? 0 : prevIndex + 1,
+        setCurrentIndex((prevIndex) =>
+          prevIndex === images.length - 1 ? 0 : prevIndex + 1
         );
         setTimeout(() => {
           setIsTransitioning(false);
         }, 50);
       }, 300);
-    }, 5000);
+    }, 5000); // Change image every 5 seconds
 
-    return () => clearInterval(baklavaInterval);
-  }, []);
+    return () => clearInterval(interval);
+  }, [images]);
 
   return (
     <div className="relative aspect-[4/3] w-full lg:w-1/2">
@@ -32,13 +33,13 @@ function BaklavaShowcase() {
 
       {/* Image Container */}
       <div className="relative h-full overflow-hidden rounded-3xl shadow-2xl">
-        {baklavaImages.map((image, index) => (
+        {images.map((image, index) => (
           <Image
-            key={image.alt}
+            key={index}
             src={image.url}
             alt={image.alt}
             className={`absolute inset-0 h-full w-full object-cover transition-all duration-500 ${
-              index === currentBaklavaIndex
+              index === currentIndex
                 ? `scale-100 opacity-100 ${
                     isTransitioning ? "rotate-12 scale-110" : "rotate-0"
                   }`
@@ -52,4 +53,4 @@ function BaklavaShowcase() {
   );
 }
 
-export default memo(BaklavaShowcase);
+export default memo(ImageShowcase);

@@ -1,9 +1,17 @@
-import { ChevronRight } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { categoryShowcase, features } from "../data/home-data";
+// pages/index.js
 
-import BaklavaShowcase from "../components/BaklavaShowcase";
+import { ChevronRight } from "lucide-react";
+import Link from "next/link";
+import {
+  categoryShowcase,
+  features,
+  baklavaImages,
+  category1Images,
+  category2Images,
+  category3Images,
+} from "../data/home-data";
+
+import ImageShowcase from "../components/ImageShowcase";
 import HeroImages from "../components/HeroImages";
 
 export default function Home() {
@@ -71,8 +79,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Include the BaklavaShowcase client component */}
-            <BaklavaShowcase />
+            {/* Use the ImageShowcase component for Baklava Images */}
+            <ImageShowcase images={baklavaImages} />
           </div>
         </div>
       </section>
@@ -90,54 +98,111 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-24">
-            {categoryShowcase.map((category, index) => (
-              <div
-                key={category.name}
-                className={`flex flex-col items-center gap-12 lg:flex-row ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
-              >
-                <div className="relative lg:w-1/2">
-                  <div className="absolute inset-0 -rotate-3 transform rounded-3xl bg-gradient-to-r from-rose-600/20 to-rose-500/20" />
-                  <Image
-                    src={category.image}
-                    alt={category.name}
-                    className="relative aspect-[4/3] w-full transform rounded-3xl object-cover shadow-xl transition-transform duration-500 hover:rotate-3"
-                    width={600} // Specify width
-                    height={450} // Specify height
-                  />
+          <div className="grid grid-cols-1 gap-28">
+            {/* Category 1 */}
+            <div className="flex flex-col items-center gap-12 lg:flex-row">
+              {/* ImageShowcase for Category 1 */}
+              <ImageShowcase images={category1Images} />
+
+              <div className="space-y-6 lg:w-1/2">
+                <h3 className="font-serif text-3xl font-bold text-gray-900">
+                  {categoryShowcase[0].name}
+                </h3>
+                <p className="text-lg text-gray-600">
+                  {categoryShowcase[0].description}
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  {categoryShowcase[0].products.map((product) => (
+                    <div
+                      key={product}
+                      className="flex items-center rounded-xl bg-rose-50 p-4"
+                    >
+                      <div className="mr-3 h-2 w-2 rounded-full bg-rose-500" />
+                      <span className="text-gray-800">{product}</span>
+                    </div>
+                  ))}
                 </div>
-                <div className="space-y-6 lg:w-1/2">
-                  <h3 className="font-serif text-3xl font-bold text-gray-900">
-                    {category.name}
-                  </h3>
-                  <p className="text-lg text-gray-600">
-                    {category.description}
-                  </p>
-                  <div className="grid grid-cols-2 gap-4">
-                    {category.products.map((product) => (
-                      <div
-                        key={product}
-                        className="flex items-center rounded-xl bg-rose-50 p-4"
-                      >
-                        <div className="mr-3 h-2 w-2 rounded-full bg-rose-500" />
-                        <span className="text-gray-800">{product}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link
-                    href={`/gallery?category=${encodeURIComponent(
-                      category.searchName,
-                    )}`}
-                    className="inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
-                  >
-                    Shikoni të Gjitha Produktet{" "}
-                    <ChevronRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </div>
+                <Link
+                  href={`/gallery?category=${encodeURIComponent(
+                    categoryShowcase[0].searchName
+                  )}`}
+                  className="inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
+                >
+                  Shikoni të Gjitha Produktet{" "}
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </Link>
               </div>
-            ))}
+            </div>
+
+            {/* Category 2 */}
+            <div className="flex flex-col items-center gap-12 lg:flex-row-reverse">
+              {/* ImageShowcase for Category 2 */}
+              <ImageShowcase images={category2Images} />
+
+              <div className="space-y-6 lg:w-1/2">
+                <h3 className="font-serif text-3xl font-bold text-gray-900">
+                  {categoryShowcase[1].name}
+                </h3>
+                <p className="text-lg text-gray-600">
+                  {categoryShowcase[1].description}
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  {categoryShowcase[1].products.map((product) => (
+                    <div
+                      key={product}
+                      className="flex items-center rounded-xl bg-rose-50 p-4"
+                    >
+                      <div className="mr-3 h-2 w-2 rounded-full bg-rose-500" />
+                      <span className="text-gray-800">{product}</span>
+                    </div>
+                  ))}
+                </div>
+                <Link
+                  href={`/gallery?category=${encodeURIComponent(
+                    categoryShowcase[1].searchName
+                  )}`}
+                  className="inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
+                >
+                  Shikoni të Gjitha Produktet{" "}
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Category 3 */}
+            <div className="flex flex-col items-center gap-12 lg:flex-row">
+              {/* ImageShowcase for Category 3 */}
+              <ImageShowcase images={category3Images} />
+
+              <div className="space-y-6 lg:w-1/2">
+                <h3 className="font-serif text-3xl font-bold text-gray-900">
+                  {categoryShowcase[2].name}
+                </h3>
+                <p className="text-lg text-gray-600">
+                  {categoryShowcase[2].description}
+                </p>
+                <div className="grid grid-cols-2 gap-4">
+                  {categoryShowcase[2].products.map((product) => (
+                    <div
+                      key={product}
+                      className="flex items-center rounded-xl bg-rose-50 p-4"
+                    >
+                      <div className="mr-3 h-2 w-2 rounded-full bg-rose-500" />
+                      <span className="text-gray-800">{product}</span>
+                    </div>
+                  ))}
+                </div>
+                <Link
+                  href={`/gallery?category=${encodeURIComponent(
+                    categoryShowcase[2].searchName
+                  )}`}
+                  className="inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
+                >
+                  Shikoni të Gjitha Produktet{" "}
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

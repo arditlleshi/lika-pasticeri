@@ -3,9 +3,15 @@
 import { Cake, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
   const pathname = usePathname();
+  const [year, setYear] = useState<number | undefined>(undefined);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
 
   return (
     <footer className="bg-footer-gradient text-white">
@@ -51,7 +57,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
-                  className={`transition-colors hover:text-rose-500 ${pathname == "/pasticeri-lika" ? "text-rose-500" : "text-gray-300"}`}
+                  className={`transition-colors hover:text-rose-500 ${pathname == "/" ? "text-rose-500" : "text-gray-300"}`}
                 >
                   Kreu
                 </Link>
@@ -59,7 +65,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/gallery"
-                  className={`transition-colors hover:text-rose-500 ${pathname == "/pasticeri-lika/gallery" ? "text-rose-500" : "text-gray-300"}`}
+                  className={`transition-colors hover:text-rose-500 ${pathname == "/gallery" ? "text-rose-500" : "text-gray-300"}`}
                 >
                   Galeria
                 </Link>
@@ -67,7 +73,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/about-us"
-                  className={`transition-colors hover:text-rose-500 ${pathname == "/pasticeri-lika/about-us" ? "text-rose-500" : "text-gray-300"}`}
+                  className={`transition-colors hover:text-rose-500 ${pathname == "/about-us" ? "text-rose-500" : "text-gray-300"}`}
                 >
                   Rreth Nesh
                 </Link>
@@ -75,7 +81,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact-us"
-                  className={`transition-colors hover:text-rose-500 ${pathname == "/pasticeri-lika/contact-us" ? "text-rose-500" : "text-gray-300"}`}
+                  className={`transition-colors hover:text-rose-500 ${pathname == "/contact-us" ? "text-rose-500" : "text-gray-300"}`}
                 >
                   Kontakt
                 </Link>
@@ -134,7 +140,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Pastiçeri Lika. All rights reserved.
+              © {year ?? ''} Pastiçeri Lika. All rights reserved.
             </p>
             {/* <div className="flex gap-6 text-sm">
               <a

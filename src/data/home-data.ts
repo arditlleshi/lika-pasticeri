@@ -24,6 +24,7 @@ export const heroImages = [
     alt: "Pastritë e Freskëta",
   },
 ];
+
 export const baklavaImages = [
   {
     url: bakllava1,
@@ -36,6 +37,39 @@ export const baklavaImages = [
   {
     url: bakllava3,
     alt: "Baklava me Mjaltë",
+  },
+];
+
+export const category1Images = [
+  {
+    url: bakery1,
+    alt: "Baklava",
+  },
+  {
+    url: bakery2,
+    alt: "Bukë Artisanale",
+  },
+];
+
+export const category2Images = [
+  {
+    url: bakery3,
+    alt: "Torta Premium",
+  },
+  {
+    url: bakery2,
+    alt: "Torta Premium",
+  },
+];
+
+export const category3Images = [
+  {
+    url: photo1,
+    alt: "Torta Premium",
+  },
+  {
+    url: photo2,
+    alt: "Torta Premium",
   },
 ];
 
@@ -59,10 +93,10 @@ export const features = [
 
 export const categoryShowcase = [
   {
-    name: "Ëmërtësia Tradicionale",
+    name: "Ëmbëlsira Tradicionale",
     searchName: "Traditional",
     description:
-      "I punuara me dashuri duke përdorur receta tradicionale shqiptare të kaluar nga brezi në brez",
+      "Të punuara me dashuri duke përdorur receta tradicionale shqiptare të kaluar nga brezi në brez",
     image: bakery1,
     products: ["Baklava", "Kadaif", "Trilece", "Revani"],
   },

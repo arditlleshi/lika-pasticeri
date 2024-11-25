@@ -1,4 +1,4 @@
-import { Coffee, Milk, Wine } from "lucide-react";
+import { Cake, Coffee, Milk, Wine } from "lucide-react";
 import { MenuBarCategory, MenuBarItems } from "./types";
 
 export const menuBarItems: MenuBarItems = {
@@ -216,30 +216,65 @@ export const menuBarItems: MenuBarItems = {
       description: "Regional favorite",
     },
   ],
-  cocktails: [
+  cakes: [
     {
-      name: "Mojito",
-      price: "500 LEK",
+      name: "Bakllava me Akullore",
+      price: "250 LEK",
       description: "Rum, mint, lime, sugar, soda",
     },
     {
-      name: "Aperol Spritz",
-      price: "550 LEK",
+      name: "Pastë Premium",
+      price: "250 LEK",
       description: "Aperol, prosecco, soda",
     },
     {
-      name: "Negroni",
-      price: "600 LEK",
+      name: "Pastë Akulli",
+      price: "180 LEK",
       description: "Gin, campari, vermouth",
     },
     {
-      name: "Margarita",
-      price: "550 LEK",
+      name: "Parfe",
+      price: "150 LEK",
       description: "Tequila, triple sec, lime",
     },
     {
-      name: "Moscow Mule",
-      price: "500 LEK",
+      name: "Trileçe",
+      price: "150 LEK",
+      description: "Vodka, ginger beer, lime",
+    },
+    {
+      name: "Briosh",
+      price: "70 LEK",
+      description: "Vodka, ginger beer, lime",
+    },
+    {
+      name: "Zupë Shtëpie",
+      price: "130 LEK",
+      description: "Vodka, ginger beer, lime",
+    },
+    {
+      name: "Kek Shtëpie",
+      price: "150 LEK",
+      description: "Vodka, ginger beer, lime",
+    },
+    {
+      name: "Pastashu",
+      price: "100 LEK",
+      description: "Vodka, ginger beer, lime",
+    },
+    {
+      name: "Trigona të Mbushur",
+      price: "100 LEK",
+      description: "Vodka, ginger beer, lime",
+    },
+    {
+      name: "Tartë me Fruta",
+      price: "120 LEK",
+      description: "Vodka, ginger beer, lime",
+    },
+    {
+      name: "Cheesecake",
+      price: "250 LEK",
       description: "Vodka, ginger beer, lime",
     },
   ],
@@ -380,21 +415,21 @@ export const menuBarCategories: MenuBarCategory[] = [
   //   description: "Local and international craft beers",
   // },
   {
-    id: "cocktails",
-    name: "Cocktails",
-    icon: Wine,
+    id: "cakes",
+    name: "Ëmbëlsira",
+    icon: Cake,
     image:
       "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80",
     description: "Signature cocktails crafted by our expert mixologists",
   },
-  {
-    id: "hot-drinks",
-    name: "Hot Drinks",
-    icon: Coffee,
-    image:
-      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80",
-    description: "Comforting hot beverages for any time of day",
-  },
+  // {
+  //   id: "hot-drinks",
+  //   name: "Hot Drinks",
+  //   icon: Coffee,
+  //   image:
+  //     "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80",
+  //   description: "Comforting hot beverages for any time of day",
+  // },
   {
     id: "soft-drinks",
     name: "Pije Freskuese",

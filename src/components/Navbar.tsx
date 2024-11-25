@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, ShoppingBag, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -105,10 +105,10 @@ const Navbar = () => {
                 {label}
               </Link>
             ))}
-            <button className="flex w-full items-center rounded-full bg-gradient-to-r from-rose-600 to-rose-500 px-4 py-2 text-white hover:from-rose-700 hover:to-rose-600">
+            {/* <button className="flex w-full items-center rounded-full bg-gradient-to-r from-rose-600 to-rose-500 px-4 py-2 text-white hover:from-rose-700 hover:to-rose-600">
               <ShoppingBag className="mr-2 h-4 w-4" />
               Order Now
-            </button>
+            </button> */}
           </div>
         </div>
       )}

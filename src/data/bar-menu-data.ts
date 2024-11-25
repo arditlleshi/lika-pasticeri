@@ -1,94 +1,217 @@
-import { MenuBarItems, MenuBarCategory } from "./types";
-import { Coffee, Wine, Beer, Milk } from "lucide-react";
+import { Coffee, Milk, Wine } from "lucide-react";
+import { MenuBarCategory, MenuBarItems } from "./types";
 
 export const menuBarItems: MenuBarItems = {
   coffee: [
     {
-      name: "Espresso",
-      price: "150 LEK",
+      name: "Kafe",
+      price: "80 LEK",
       description: "Single shot of espresso",
     },
     {
-      name: "Double Espresso",
-      price: "200 LEK",
+      name: "Makiato",
+      price: "90 LEK",
       description: "Double shot of espresso",
     },
     {
-      name: "Cappuccino",
-      price: "250 LEK",
+      name: "Çaj",
+      price: "80 LEK",
       description: "Espresso with steamed milk and foam",
     },
     {
-      name: "Cafe Latte",
-      price: "280 LEK",
+      name: "Çokollatë e Ngrohtë",
+      price: "180 LEK",
       description: "Espresso with steamed milk",
     },
     {
-      name: "American Coffee",
+      name: "Çokollatë e Ftohtë",
       price: "200 LEK",
       description: "Long black coffee",
     },
     {
-      name: "Macchiato",
+      name: "Frappe",
       price: "180 LEK",
       description: "Espresso with a dash of milk foam",
     },
     {
-      name: "Iced Coffee",
-      price: "300 LEK",
+      name: "Kafe Late",
+      price: "150 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Kafe Amerikane",
+      price: "100 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Kapuçino Bustine",
+      price: "180 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Kapuçino Kafe",
+      price: "150 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Kapuçino Ftohtë",
+      price: "180 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Kakao",
+      price: "180 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Kakao e Ftohtë",
+      price: "180 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Dekafeinato",
+      price: "100 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Çaj Bio",
+      price: "150 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Salep",
+      price: "150 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Kafe Turke",
+      price: "80 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Konjak + Çaj",
+      price: "150 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Fredo",
+      price: "150 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Kafe Ftohtë",
+      price: "120 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Çaj me Qumësht",
+      price: "150 LEK",
+      description: "Cold coffee with ice cream",
+    },
+    {
+      name: "Korreto",
+      price: "180 LEK",
       description: "Cold coffee with ice cream",
     },
   ],
   alcohol: [
     {
-      name: "Red Wine (Glass)",
-      price: "400 LEK",
+      name: "Birrë Peroni",
+      price: "180 LEK",
       description: "Selected Albanian red wine",
     },
     {
-      name: "White Wine (Glass)",
-      price: "400 LEK",
+      name: "Vodka Smirnoff",
+      price: "300 LEK",
       description: "Selected Albanian white wine",
     },
     {
-      name: "Raki",
-      price: "250 LEK",
+      name: "Xhoni i Zi	",
+      price: "400 LEK",
       description: "Traditional Albanian spirit",
     },
     {
-      name: "Cognac",
-      price: "450 LEK",
+      name: "Jack Daniels",
+      price: "400 LEK",
       description: "Premium cognac",
     },
     {
-      name: "Whiskey",
-      price: "500 LEK",
+      name: "J&B",
+      price: "300 LEK",
       description: "Selected whiskey brands",
     },
     {
-      name: "Vodka",
-      price: "350 LEK",
+      name: "Xhoni i Kuq",
+      price: "300 LEK",
       description: "Premium vodka",
     },
-  ],
-  beer: [
     {
-      name: "Korça Draft",
-      price: "300 LEK",
+      name: "Konjak Skënderbeu",
+      price: "100 LEK",
       description: "Local Albanian beer",
     },
     {
-      name: "Heineken",
-      price: "350 LEK",
+      name: "Martini Bardhë	",
+      price: "300 LEK",
       description: "International premium beer",
     },
     {
-      name: "Corona",
-      price: "400 LEK",
+      name: "Martini i Kuq",
+      price: "300 LEK",
       description: "Mexican beer",
     },
     {
-      name: "Peja",
+      name: "Martini Roso",
+      price: "300 LEK",
+      description: "Regional favorite",
+    },
+    {
+      name: "Amaro Montenegro",
+      price: "300 LEK",
+      description: "Regional favorite",
+    },
+    {
+      name: "Campari",
+      price: "300 LEK",
+      description: "Regional favorite",
+    },
+    {
+      name: "Disarono",
+      price: "300 LEK",
+      description: "Regional favorite",
+    },
+    {
+      name: "Fernet Branka",
+      price: "300 LEK",
+      description: "Regional favorite",
+    },
+    {
+      name: "Gin Gordon",
+      price: "300 LEK",
+      description: "Regional favorite",
+    },
+    {
+      name: "Jaggermaster",
+      price: "300 LEK",
+      description: "Regional favorite",
+    },
+    {
+      name: "Metaxa",
+      price: "300 LEK",
+      description: "Regional favorite",
+    },
+    {
+      name: "Uzo",
+      price: "300 LEK",
+      description: "Regional favorite",
+    },
+    {
+      name: "Vechia Romake",
+      price: "300 LEK",
+      description: "Regional favorite",
+    },
+    {
+      name: "Sambuko Molinaro",
       price: "300 LEK",
       description: "Regional favorite",
     },
@@ -144,28 +267,88 @@ export const menuBarItems: MenuBarItems = {
   ],
   "soft-drinks": [
     {
-      name: "Fresh Orange Juice",
-      price: "300 LEK",
+      name: "Ujë",
+      price: "80 LEK",
       description: "Freshly squeezed oranges",
     },
     {
-      name: "Lemonade",
-      price: "250 LEK",
+      name: "Çaj i Ftohtë",
+      price: "150 LEK",
       description: "Fresh lemon juice with mint",
     },
     {
-      name: "Coca Cola",
-      price: "200 LEK",
+      name: "Cola",
+      price: "150 LEK",
       description: "Classic soft drink",
     },
     {
-      name: "Sparkling Water",
+      name: "Fanta",
       price: "150 LEK",
       description: "Natural mineral water",
     },
     {
-      name: "Smoothies",
-      price: "400 LEK",
+      name: "Lemon Soda",
+      price: "150 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Orange Soda",
+      price: "150 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Shveps",
+      price: "150 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Bitter",
+      price: "100 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Lëng Mix",
+      price: "300 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Lëng Portokalli",
+      price: "250 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Redbull",
+      price: "280 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Ujë Vitaminash",
+      price: "120 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Bravo",
+      price: "150 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "B52",
+      price: "150 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Golden Eagle",
+      price: "150 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Lëng Natyral",
+      price: "150 LEK",
+      description: "Various fruit combinations",
+    },
+    {
+      name: "Frizz",
+      price: "300 LEK",
       description: "Various fruit combinations",
     },
   ],
@@ -174,7 +357,7 @@ export const menuBarItems: MenuBarItems = {
 export const menuBarCategories: MenuBarCategory[] = [
   {
     id: "coffee",
-    name: "Coffee",
+    name: "Kafe dhe Pije të Ngrohta",
     icon: Coffee,
     image:
       "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80",
@@ -182,20 +365,20 @@ export const menuBarCategories: MenuBarCategory[] = [
   },
   {
     id: "alcohol",
-    name: "Alcohol",
+    name: "Pije Alkoolike",
     icon: Wine,
     image:
       "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&q=80",
     description: "Fine selection of wines and premium spirits",
   },
-  {
-    id: "beer",
-    name: "Beer",
-    icon: Beer,
-    image:
-      "https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&q=80",
-    description: "Local and international craft beers",
-  },
+  // {
+  //   id: "beer",
+  //   name: "Beer",
+  //   icon: Beer,
+  //   image:
+  //     "https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&q=80",
+  //   description: "Local and international craft beers",
+  // },
   {
     id: "cocktails",
     name: "Cocktails",
@@ -214,7 +397,7 @@ export const menuBarCategories: MenuBarCategory[] = [
   },
   {
     id: "soft-drinks",
-    name: "Soft Drinks",
+    name: "Pije Freskuese",
     icon: Milk,
     image:
       "https://images.unsplash.com/photo-1437418747212-8d9709afab22?auto=format&fit=crop&q=80",

@@ -39,11 +39,11 @@ const Navbar = () => {
       className="fixed z-50 w-full bg-white/80 shadow-lg backdrop-blur-md"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
+        <div className="relative flex h-20 items-center justify-between">
           <Link
             href="/"
             scroll={false}
-            className="flex w-full items-center justify-center md:w-auto md:justify-start"
+            className="absolute left-0 right-0 md:static flex w-full items-center justify-center md:w-auto md:justify-start"
             onClick={handleLinkClick}
           >
             <Image src={logo} alt="Pastiçeri Lika" className="h-12 w-52" />
@@ -72,7 +72,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="flex items-center md:hidden">
+          <div className="absolute right-0 z-10 flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-900"

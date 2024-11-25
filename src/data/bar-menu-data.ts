@@ -1,4 +1,4 @@
-import { Cake, Coffee, Milk, Wine } from "lucide-react";
+import { Cake, Coffee, CupSoda, Milk, Wine } from "lucide-react";
 import { MenuBarCategory, MenuBarItems } from "./types";
 
 export const menuBarItems: MenuBarItems = {
@@ -12,21 +12,6 @@ export const menuBarItems: MenuBarItems = {
       name: "Makiato",
       price: "90 LEK",
       description: "Double shot of espresso",
-    },
-    {
-      name: "Çaj",
-      price: "80 LEK",
-      description: "Espresso with steamed milk and foam",
-    },
-    {
-      name: "Çokollatë e Ngrohtë",
-      price: "180 LEK",
-      description: "Espresso with steamed milk",
-    },
-    {
-      name: "Çokollatë e Ftohtë",
-      price: "200 LEK",
-      description: "Long black coffee",
     },
     {
       name: "Frappe",
@@ -74,11 +59,6 @@ export const menuBarItems: MenuBarItems = {
       description: "Cold coffee with ice cream",
     },
     {
-      name: "Çaj Bio",
-      price: "150 LEK",
-      description: "Cold coffee with ice cream",
-    },
-    {
       name: "Salep",
       price: "150 LEK",
       description: "Cold coffee with ice cream",
@@ -101,16 +81,6 @@ export const menuBarItems: MenuBarItems = {
     {
       name: "Kafe Ftohtë",
       price: "120 LEK",
-      description: "Cold coffee with ice cream",
-    },
-    {
-      name: "Çaj me Qumësht",
-      price: "150 LEK",
-      description: "Cold coffee with ice cream",
-    },
-    {
-      name: "Korreto",
-      price: "180 LEK",
       description: "Cold coffee with ice cream",
     },
   ],
@@ -280,24 +250,34 @@ export const menuBarItems: MenuBarItems = {
   ],
   "hot-drinks": [
     {
-      name: "Tea Selection",
+      name: "Çaj",
+      price: "80 LEK",
+      description: "Espresso with steamed milk and foam",
+    },
+    {
+      name: "Çokollatë e Ngrohtë",
+      price: "180 LEK",
+      description: "Espresso with steamed milk",
+    },
+    {
+      name: "Çokollatë e Ftohtë",
       price: "200 LEK",
-      description: "Various flavors available",
+      description: "Long black coffee",
     },
     {
-      name: "Hot Chocolate",
-      price: "300 LEK",
-      description: "Rich and creamy chocolate",
+      name: "Çaj Bio",
+      price: "150 LEK",
+      description: "Cold coffee with ice cream",
     },
     {
-      name: "Salep",
-      price: "250 LEK",
-      description: "Traditional winter drink",
+      name: "Çaj me Qumësht",
+      price: "150 LEK",
+      description: "Cold coffee with ice cream",
     },
     {
-      name: "Chamomile Tea",
-      price: "200 LEK",
-      description: "Soothing herbal tea",
+      name: "Korreto",
+      price: "180 LEK",
+      description: "Cold coffee with ice cream",
     },
   ],
   "soft-drinks": [
@@ -392,11 +372,19 @@ export const menuBarItems: MenuBarItems = {
 export const menuBarCategories: MenuBarCategory[] = [
   {
     id: "coffee",
-    name: "Kafe dhe Pije të Ngrohta",
+    name: "Kafe",
     icon: Coffee,
     image:
       "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&q=80",
     description: "Expertly crafted coffee beverages made with premium beans",
+  },
+  {
+    id: "hot-drinks",
+    name: "Pije të Ngrohta",
+    icon: CupSoda,
+    image:
+      "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80",
+    description: "Comforting hot beverages for any time of day",
   },
   {
     id: "alcohol",
@@ -422,14 +410,6 @@ export const menuBarCategories: MenuBarCategory[] = [
       "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80",
     description: "Signature cocktails crafted by our expert mixologists",
   },
-  // {
-  //   id: "hot-drinks",
-  //   name: "Hot Drinks",
-  //   icon: Coffee,
-  //   image:
-  //     "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&q=80",
-  //   description: "Comforting hot beverages for any time of day",
-  // },
   {
     id: "soft-drinks",
     name: "Pije Freskuese",

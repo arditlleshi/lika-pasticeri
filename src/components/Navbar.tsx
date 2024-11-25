@@ -43,7 +43,7 @@ const Navbar = () => {
           <Link
             href="/"
             scroll={false}
-            className="flex items-center"
+            className="flex w-full items-center justify-center md:w-auto md:justify-start"
             onClick={handleLinkClick}
           >
             <Image src={logo} alt="Pastiçeri Lika" className="h-12 w-52" />

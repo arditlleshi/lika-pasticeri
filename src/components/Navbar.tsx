@@ -49,7 +49,7 @@ const Navbar = () => {
           <Link
             href="/"
             scroll={false}
-            className="absolute left-0 right-0 md:static flex w-full items-center justify-center md:w-auto md:justify-start"
+            className="absolute left-0 right-0 flex w-full items-center justify-center md:static md:w-auto md:justify-start"
             onClick={handleLinkClick}
           >
             <Image src={logo} alt="Pastiçeri Lika" className="h-12 w-52" />
@@ -77,7 +77,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="md:hidden">
+          <div className="absolute right-0 md:hidden">
             <MenuButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
           </div>
         </div>

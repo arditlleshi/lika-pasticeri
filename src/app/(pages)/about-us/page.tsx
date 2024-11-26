@@ -1,6 +1,6 @@
-import { MapPin } from "lucide-react";
-import { locations, stats, timeline } from "../../../data/about-data";
+import StoreCard from "@/components/StoreCard";
 import Image from "next/image";
+import { locations, stats, timeline } from "../../../data/about-data";
 
 export default function About() {
   return (
@@ -139,43 +139,19 @@ export default function About() {
       </section>
 
       {/* Locations Section */}
-      <section className="bg-gray-50 py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <h2 className="mb-16 text-center font-serif text-4xl font-bold text-gray-900">
-            Dyqanet tona
-          </h2>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-serif font-bold text-gray-900 mb-4">
+              Dyqanet tona
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Visit us at any of our locations to experience the perfect blend of tradition and innovation in every bite.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {locations.map((location, index) => (
-              <div
-                key={index}
-                className="overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl"
-              >
-                <div className="group relative aspect-[4/3]">
-                  <Image
-                    src={location.image}
-                    alt={location.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    fill
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <a
-                      href={location.mapUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex transform items-center gap-2 rounded-full bg-white px-6 py-3 text-gray-900 transition-colors hover:scale-105 hover:bg-rose-600 hover:text-white"
-                    >
-                      <MapPin className="h-5 w-5" />
-                      Shiko në Hartë
-                    </a>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-3 text-xl font-semibold text-gray-900">
-                    {location.name}
-                  </h3>
-                  <p className="text-gray-600">{location.description}</p>
-                </div>
-              </div>
+              <StoreCard key={index} {...location} />
             ))}
           </div>
         </div>

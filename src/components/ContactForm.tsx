@@ -8,11 +8,11 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4 text-gray-700">
       <div>
         <label
           htmlFor="fullName"
-          className="mb-1 block text-sm font-medium text-gray-700"
+          className="mb-1 block text-sm font-medium"
         >
           Emri i Plotë
         </label>
@@ -21,14 +21,14 @@ export default function ContactForm() {
           id="fullName"
           name="fullName"
           required
-          className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-colors focus:border-transparent focus:ring-2 focus:ring-rose-500"
+          className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-rose-500"
           placeholder="Emri juaj i plotë"
         />
       </div>
       <div>
         <label
           htmlFor="email"
-          className="mb-1 block text-sm font-medium text-gray-700"
+          className="mb-1 block text-sm font-medium"
         >
           Adresa e Email-it
         </label>
@@ -37,14 +37,14 @@ export default function ContactForm() {
           id="email"
           name="email"
           required
-          className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-colors focus:border-transparent focus:ring-2 focus:ring-rose-500"
+          className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-rose-500"
           placeholder="juaj@email.com"
         />
       </div>
       <div>
         <label
           htmlFor="phone"
-          className="mb-1 block text-sm font-medium text-gray-700"
+          className="mb-1 block text-sm font-medium"
         >
           Numri i Telefonit
         </label>
@@ -52,14 +52,14 @@ export default function ContactForm() {
           type="tel"
           id="phone"
           name="phone"
-          className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-colors focus:border-transparent focus:ring-2 focus:ring-rose-500"
+          className="w-full rounded-lg border border-gray-300 px-4 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-rose-500"
           placeholder="+355 6X XXX XXXX"
         />
       </div>
       <div>
         <label
           htmlFor="message"
-          className="mb-1 block text-sm font-medium text-gray-700"
+          className="mb-1 block text-sm font-medium"
         >
           Mesazhi
         </label>
@@ -68,7 +68,7 @@ export default function ContactForm() {
           name="message"
           required
           rows={4}
-          className="w-full resize-none rounded-lg border border-gray-300 px-4 py-2 transition-colors focus:border-transparent focus:ring-2 focus:ring-rose-500"
+          className="w-full resize-none rounded-lg border border-gray-300 px-4 py-2 transition-colors focus:outline-none focus:ring-2 focus:ring-rose-500"
           placeholder="Mesazhi juaj..."
         />
       </div>

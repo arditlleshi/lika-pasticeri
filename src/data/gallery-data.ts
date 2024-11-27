@@ -1,7 +1,7 @@
 import { Product } from "./types";
 
 export const categories: string[] = [
-  "All",
+  "Të Gjitha",
   "Breads",
   "Pastries",
   "Cakes",

@@ -26,7 +26,7 @@ export default async function GalleryPage({
   // Get selected category
   const selectedCategory = categoryFromParams && categories.includes(categoryFromParams)
     ? categoryFromParams
-    : "All";
+    : "Të Gjitha";
 
   // Get subcategories for selected category
   const getSubcategories = (category: string): string[] => {
@@ -50,7 +50,7 @@ export default async function GalleryPage({
   // Filter products
   const filteredProducts = products.filter((product: Product) => {
     const categoryMatch =
-      selectedCategory === "All" || product.category === selectedCategory;
+      selectedCategory === "Të Gjitha" || product.category === selectedCategory;
     const subcategoryMatch =
       !selectedSubcategory || product.subcategory === selectedSubcategory;
     const searchMatch = searchQuery

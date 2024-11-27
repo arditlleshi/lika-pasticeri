@@ -80,10 +80,10 @@ export default function GalleryFilters({
               <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 transform text-gray-400" />
               <input
                 type="text"
-                placeholder="Search gallery..."
+                placeholder="Kërkoni produktin..."
                 defaultValue={initialSearchQuery}
                 onChange={handleSearchChange}
-                className="w-full rounded-full border py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-rose-500"
+                className="w-full text-gray-600 rounded-full border py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-rose-500"
               />
             </div>
           </div>

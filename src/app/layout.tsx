@@ -1,11 +1,9 @@
+import ActionButton from "@/components/ActionButton";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import "./globals.css";
-import Link from "next/link";
-import Image from "next/image";
-import whatsAppIcon from "../assets/logo/whatsapp.png";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,40 +39,8 @@ export default function RootLayout({
         </div>
 
         {/* Quick Actions */}
-        <div className="fixed bottom-6 right-6 z-50">
-          <div className="flex flex-col gap-3">
-            {/* <button
-              // onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="p-3 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
-            >
-              <svg
-                className="w-5 h-5 text-gray-600 group-hover:text-rose-600 transition-colors duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 10l7-7m0 0l7 7m-7-7v18"
-                />
-              </svg>
-            </button> */}
-            <Link
-              href="https://wa.me/355674004072?text=Përshëndetje,%20%20interesohem%20për%20"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image
-                src={whatsAppIcon}
-                alt="WhatsApp"
-                width={50}
-                height={50}
-              />
-            </Link>
-          </div>
-        </div>
+        <ActionButton />
+
       </body>
     </html>
   );

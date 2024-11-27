@@ -30,8 +30,9 @@ export default async function BarMenuPage({ searchParams }: BarMenuPageProps) {
         <div className="absolute inset-0">
           <Image
             src={selectedCategory.image}
-            loading="lazy"
+            // loading="lazy"
             fill
+            priority
             alt={selectedCategory.name}
             className="w-full h-full object-cover transition-all duration-700 transform"
           />

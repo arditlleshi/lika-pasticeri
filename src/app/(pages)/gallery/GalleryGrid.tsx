@@ -38,7 +38,7 @@ export default function GalleryGrid({ products }: GalleryGridProps) {
           ))
         ) : (
           <p className="col-span-full text-center text-gray-500">
-            No products found.
+            Nuk u gjet asnje produkt.
           </p>
         )}
       </div>

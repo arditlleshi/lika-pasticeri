@@ -1,10 +1,10 @@
 "use client";
 
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react"; // Import the X icon
 import { useRouter, useSearchParams } from "next/navigation";
 import FilterButton from "./FilterButton";
 import SubcategoryButton from "./SubcategoryButton";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 interface GalleryFiltersProps {
   categories: string[];
@@ -24,6 +24,12 @@ export default function GalleryFilters({
   const router = useRouter();
   const searchParams = useSearchParams();
   const productsGridRef = useRef<HTMLDivElement>(null);
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery || "");
+
+  // Update local state if initialSearchQuery changes
+  useEffect(() => {
+    setSearchQuery(initialSearchQuery || "");
+  }, [initialSearchQuery]);
 
   const scrollToProductsGrid = () => {
     if (productsGridRef.current) {
@@ -33,40 +39,50 @@ export default function GalleryFilters({
 
   const handleCategoryChange = (category: string) => {
     const params = new URLSearchParams(searchParams.toString());
-    
+
     if (category !== "All") {
       params.set("category", category);
     } else {
       params.delete("category");
     }
     params.delete("subcategory");
-    
+
     router.push(`/gallery?${params.toString()}`, { scroll: false });
     scrollToProductsGrid();
   };
 
   const handleSubcategoryChange = (subcategory: string) => {
     const params = new URLSearchParams(searchParams.toString());
-    
+
     if (subcategory) {
       params.set("subcategory", subcategory);
     } else {
       params.delete("subcategory");
     }
-    
+
     router.push(`/gallery?${params.toString()}`, { scroll: false });
     scrollToProductsGrid();
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+
     const params = new URLSearchParams(searchParams.toString());
-    
-    if (e.target.value) {
-      params.set("search", e.target.value);
+
+    if (value) {
+      params.set("search", value);
     } else {
       params.delete("search");
     }
-    
+
+    router.push(`/gallery?${params.toString()}`, { scroll: false });
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("search");
     router.push(`/gallery?${params.toString()}`, { scroll: false });
   };
 
@@ -81,10 +97,19 @@ export default function GalleryFilters({
               <input
                 type="text"
                 placeholder="Kërkoni produktin..."
-                defaultValue={initialSearchQuery}
+                value={searchQuery}
                 onChange={handleSearchChange}
-                className="w-full text-gray-600 rounded-full border py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-rose-500"
+                className="w-full text-gray-600 rounded-full border py-2 pl-10 pr-10 focus:outline-none focus:ring-2 focus:ring-rose-500"
               />
+              {searchQuery && (
+                <button
+                  onClick={clearSearch}
+                  className="absolute right-2 top-1/2  -translate-y-1/2 transform text-gray-400 hover:text-gray-600 focus:outline-none"
+                  aria-label="Clear search"
+                >
+                  <X />
+                </button>
+              )}
             </div>
           </div>
 

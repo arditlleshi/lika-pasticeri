@@ -260,11 +260,6 @@ export const menuBarItems: MenuBarItems = {
       description: "Espresso with steamed milk",
     },
     {
-      name: "Çokollatë e Ftohtë",
-      price: "200 LEK",
-      description: "Long black coffee",
-    },
-    {
       name: "Çaj Bio",
       price: "150 LEK",
       description: "Cold coffee with ice cream",
@@ -290,6 +285,11 @@ export const menuBarItems: MenuBarItems = {
       name: "Çaj i Ftohtë",
       price: "150 LEK",
       description: "Fresh lemon juice with mint",
+    },
+    {
+      name: "Çokollatë e Ftohtë",
+      price: "200 LEK",
+      description: "Long black coffee",
     },
     {
       name: "Cola",

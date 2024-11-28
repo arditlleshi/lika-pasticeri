@@ -24,10 +24,10 @@ function HeroImages() {
           key={image.alt}
           src={image.url}
           alt={image.alt}
+          fill
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${
             index === currentImageIndex ? "opacity-100" : "opacity-0"
           }`}
-          fill
         />
       ))}
       <div className="absolute inset-0 bg-black/40" />

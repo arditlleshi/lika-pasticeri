@@ -46,8 +46,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="mb-6 text-gray-300">
-              Krijimi i momenteve të gëzimit me produktet tona të pjekura që nga
-              viti 1995. Një traditë familjare e përkryerisë në çdo kafshim.
+            Lider i padiskutueshëm në tregtimin e ëmbëlsirave, me praninë tonë në mbarë Shqipërinë dhe Kosovë. Eksperienca jonë shumëvjeçare garanton cilësi, korrektësi dhe një gamë të pasur produktesh të ëmbla për çdo shije.
             </p>
             <div className="flex space-x-4">
               <Link
@@ -140,20 +139,12 @@ export default function Footer() {
           {/* Opening Hours */}
           <div>
             <h4 className="mb-6 bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-lg font-semibold text-transparent">
-              Opening Hours
+              Oraret
             </h4>
             <ul className="space-y-4">
               <li>
-                <span className="text-gray-400">Monday - Friday</span>
-                <p className="text-white">7:00 AM - 8:00 PM</p>
-              </li>
-              <li>
-                <span className="text-gray-400">Saturday</span>
-                <p className="text-white">8:00 AM - 9:00 PM</p>
-              </li>
-              <li>
-                <span className="text-gray-400">Sunday</span>
-                <p className="text-white">8:00 AM - 7:00 PM</p>
+                <span className="text-gray-400">Monday - Sunday</span>
+                <p className="text-white">7:00 AM - 10:00 PM</p>
               </li>
             </ul>
           </div>

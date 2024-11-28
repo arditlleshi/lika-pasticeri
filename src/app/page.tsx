@@ -25,7 +25,7 @@ export default function Home() {
         <div className="relative mx-auto flex h-full max-w-7xl items-center px-4">
           <div className="max-w-2xl text-white">
             <h1 className="mb-6 font-serif text-5xl font-bold md:text-6xl">
-              Pasticeri Artisan në Zemër të Tiranës
+              Freski dhe Shije në Çdo Kafshatë.
             </h1>
             <p className="mb-8 text-xl">
               Krijimi i momenteve të gëzimit me produktet tona të freskëta të
@@ -49,16 +49,17 @@ export default function Home() {
             <div className="space-y-10 lg:w-1/2">
               <div className="inline-block">
                 <span className="rounded-full bg-rose-600 bg-opacity-10 px-4 py-2 text-sm font-medium text-rose-500">
-                  Ofertë Speciale e Dërgimit
+                  Ofertë Speciale e &apos;Delivery&apos;
                 </span>
               </div>
               <h2 className="font-serif text-3xl font-bold text-white md:text-4xl">
-                Eksperienca e Baklavat Tonë të Njohur
+                Nga furra e Pasticeri Lika, në tryezën tuaj - freski dhe shije
+                autentike çdo ditë!
               </h2>
               <p className="text-lg text-gray-300">
-                Shijoni baklavat tonë të njohur, të punuara me dorë çdo ditë
-                duke përdorur arra premium, filoz të butë dhe mjaltë të pastër.
-                Tani në dispozicion për dërgim në shtëpi në të gjithë Tiranën.
+                Porositni ëmbëlsirat tona artizanale dhe produktet e përgatitura
+                me dashuri. Ne kujdesemi që ato të dorëzohen në shtëpinë tuaj
+                kudo në Shqipëri - të freskëta dhe gati për t&apos;u shijuar!
               </p>
 
               <div className="grid grid-cols-3 gap-4">
@@ -124,7 +125,7 @@ export default function Home() {
                 </div>
                 <Link
                   href={`/gallery?category=${encodeURIComponent(
-                    categoryShowcase[0].searchName
+                    categoryShowcase[0].searchName,
                   )}`}
                   className="group inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
                 >
@@ -159,7 +160,7 @@ export default function Home() {
                 </div>
                 <Link
                   href={`/gallery?category=${encodeURIComponent(
-                    categoryShowcase[1].searchName
+                    categoryShowcase[1].searchName,
                   )}`}
                   className="group inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
                 >
@@ -194,12 +195,12 @@ export default function Home() {
                 </div>
                 <Link
                   href={`/gallery?category=${encodeURIComponent(
-                    categoryShowcase[2].searchName
+                    categoryShowcase[2].searchName,
                   )}`}
                   className="group inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
                 >
                   Shikoni të Gjitha Produktet{" "}
-                  <ChevronRight className="lucide lucide-chevron-right ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="lucide lucide-chevron-right ml-1 h-4 w-4 transform transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>

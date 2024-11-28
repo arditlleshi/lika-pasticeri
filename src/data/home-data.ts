@@ -76,20 +76,21 @@ export const category3Images = [
 export const features = [
   {
     icon: Clock,
-    title: "Dërgim në Ditën e Sotme",
-    description: "Porositni para orës 14:00 për dërgim në ditën e sotme",
+    title: "Porosi e Shpejtë",
+    description: "Produktet tuaja të freskëta dorëzohen në kohë rekord, brenda 48 orëve.",
   },
   {
     icon: Truck,
-    title: "Dërgim Falas",
-    description: "Dërgim falas për porosi mbi 2500 LEK",
+    title: "Dërgesa për Produktet tona",
+    description: "Ofrojmë shërbim dërgese për disa nga produktet tona. Porositni tani dhe shijoni shijen autentike!",
   },
   {
     icon: Star,
-    title: "Cilësi Premium",
-    description: "Bërë të freskëta çdo ditë me përbërës premium",
+    title: "Shije dhe Cilësi Shqiptare",
+    description: "Produktet tona janë të freskëta, përgatiten çdo ditë me dashuri dhe përbërës të cilësisë më të lartë.",
   },
 ];
+
 
 export const categoryShowcase = [
   {

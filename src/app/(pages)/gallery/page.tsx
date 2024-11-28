@@ -3,6 +3,7 @@ import { categories, products } from "@/data/gallery-data";
 import { Product } from "@/data/types";
 import GalleryGrid from "./GalleryGrid";
 import GalleryFilters from "./GalleryFilters";
+import LoadingUI from "@/app/loading";
 
 interface GalleryPageProps {
   searchParams: Promise<{
@@ -17,16 +18,17 @@ export default async function GalleryPage({
 }: GalleryPageProps) {
   // Await searchParams
   const params = await searchParams;
-  
+
   // Get params after resolution
   const categoryFromParams = params.category;
   const subcategoryFromParams = params.subcategory;
   const searchQuery = params.search || "";
 
   // Get selected category
-  const selectedCategory = categoryFromParams && categories.includes(categoryFromParams)
-    ? categoryFromParams
-    : "Të Gjitha";
+  const selectedCategory =
+    categoryFromParams && categories.includes(categoryFromParams)
+      ? categoryFromParams
+      : "Të Gjitha";
 
   // Get subcategories for selected category
   const getSubcategories = (category: string): string[] => {
@@ -42,10 +44,11 @@ export default async function GalleryPage({
   const currentSubcategories = getSubcategories(selectedCategory);
 
   // Get selected subcategory
-  const selectedSubcategory = subcategoryFromParams && 
+  const selectedSubcategory =
+    subcategoryFromParams &&
     currentSubcategories.includes(subcategoryFromParams)
-    ? subcategoryFromParams
-    : "";
+      ? subcategoryFromParams
+      : "";
 
   // Filter products
   const filteredProducts = products.filter((product: Product) => {
@@ -75,7 +78,9 @@ export default async function GalleryPage({
       </div>
 
       {/* Filters */}
-      <Suspense fallback={<div className="py-4 text-center">Loading filters...</div>}>
+      <Suspense
+        fallback={<div className="py-4 text-center">Loading filters...</div>}
+      >
         <GalleryFilters
           categories={categories}
           selectedCategory={selectedCategory}
@@ -86,7 +91,7 @@ export default async function GalleryPage({
       </Suspense>
 
       {/* Products Grid */}
-      <Suspense fallback={<div className="py-20 text-center">Loading products...</div>}>
+      <Suspense fallback={<LoadingUI />}>
         <GalleryGrid products={filteredProducts} />
       </Suspense>
     </div>

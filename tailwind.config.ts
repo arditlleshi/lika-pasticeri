@@ -21,6 +21,9 @@ export default {
         "footer-gradient":
           "linear-gradient(to bottom, rgb(17, 24, 39), rgb(31, 41, 55))",
       },
+      width: {
+        "95": "95%",
+      },
     },
   },
   plugins: [],

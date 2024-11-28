@@ -110,11 +110,11 @@ export const categoryShowcase = [
     products: ["Sourdough", "Baguette", "Grurë e Plotë", "Bukë Dëgërrasi"],
   },
   {
-    name: "Torta Premium",
+    name: "Torta",
     searchName: "Premium",
     description:
       "Torta elegante dhe të shijshme perfekte për çdo rast të veçantë",
     image: bakery3,
-    products: ["Torta Dasmash", "Torta të Ditëlindjeve", "Torta e Këngëve"],
+    products: ["Torta Dasmash", "Torta të Ditëlindjeve", "Torta për Çdo Rast"],
   },
 ];

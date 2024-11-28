@@ -19,7 +19,11 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Pasticeri Lika",
   description: "Delicious products from Pasticeri Lika.",
-  // You can add more metadata here or customize per page
+  icons: {
+    icon: [
+      { url: "/icon", type: "image/png" },
+    ],
+  },
 };
 
 export default function RootLayout({

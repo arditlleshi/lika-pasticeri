@@ -26,7 +26,7 @@ function ImageShowcase({ images }: { images: { url: StaticImageData; alt: string
   }, [images]);
 
   return (
-    <div className="relative aspect-[4/3] w-full lg:w-1/2">
+    <div className="relative aspect-[4/3] w-95 lg:w-1/2">
       {/* Gradient Overlays */}
       <div className="absolute inset-0 rotate-6 transform rounded-3xl bg-gradient-to-r from-rose-600/20 to-rose-500/20" />
       <div className="absolute inset-0 -rotate-6 transform rounded-3xl bg-gradient-to-r from-rose-600/20 to-rose-500/20" />

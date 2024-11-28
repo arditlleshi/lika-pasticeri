@@ -10,10 +10,6 @@ import whatsAppIcon from "../assets/logo/whatsapp.png";
 export default function ActionButton() {
   const pathname = usePathname();
 
-  console.log(pathname);
-
-  
-
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <div className="flex flex-col gap-3">

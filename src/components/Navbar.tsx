@@ -86,7 +86,7 @@ const Navbar = () => {
       {/* Mobile Navigation Menu */}
       <MobileNav
         isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={handleLinkClick}
         navLinks={navLinks}
       />
     </nav>

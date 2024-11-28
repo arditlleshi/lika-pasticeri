@@ -35,7 +35,7 @@ export default function About() {
       {/* Stats Section */}
       <section className="bg-gradient-to-r from-rose-50 to-white py-16">
         <div className="mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
             {stats.map((stat, index) => (
               <div
                 key={index}

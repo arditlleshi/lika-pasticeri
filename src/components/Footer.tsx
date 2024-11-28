@@ -5,6 +5,23 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
+const TikTokIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="h-6 w-6"
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
+
 export default function Footer() {
   const pathname = usePathname();
   const [year, setYear] = useState<number | undefined>(undefined);
@@ -33,18 +50,24 @@ export default function Footer() {
               viti 1995. Një traditë familjare e përkryerisë në çdo kafshim.
             </p>
             <div className="flex space-x-4">
-              <a
+              <Link
                 href="#"
                 className="text-gray-400 transition-colors hover:text-rose-500"
               >
                 <Instagram className="h-6 w-6" />
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#"
                 className="text-gray-400 transition-colors hover:text-rose-500"
               >
                 <Facebook className="h-6 w-6" />
-              </a>
+              </Link>
+              <Link
+                href="#"
+                className="text-gray-400 transition-colors hover:text-rose-500"
+              >
+                <TikTokIcon />
+              </Link>
             </div>
           </div>
 
@@ -142,23 +165,6 @@ export default function Footer() {
             <p className="text-sm text-gray-400">
               © {year ?? ''} Pastiçeri Lika. All rights reserved.
             </p>
-            {/* <div className="flex gap-6 text-sm">
-              <a
-                href="#"
-                className="text-gray-400 hover:text-rose-400 transition-colors">
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-rose-400 transition-colors">
-                Terms of Service
-              </a>
-              <a
-                href="#"
-                className="text-gray-400 hover:text-rose-400 transition-colors">
-                Cookie Policy
-              </a>
-            </div> */}
           </div>
         </div>
       </div>

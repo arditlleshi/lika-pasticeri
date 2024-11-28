@@ -46,7 +46,10 @@ export default function Footer() {
               </span>
             </div>
             <p className="mb-6 text-gray-300">
-            Lider i padiskutueshëm në tregtimin e ëmbëlsirave, me praninë tonë në mbarë Shqipërinë dhe Kosovë. Eksperienca jonë shumëvjeçare garanton cilësi, korrektësi dhe një gamë të pasur produktesh të ëmbla për çdo shije.
+              Lider i padiskutueshëm në tregtimin e ëmbëlsirave, me praninë tonë
+              në mbarë Shqipërinë dhe Kosovë. Eksperienca jonë shumëvjeçare
+              garanton cilësi, korrektësi dhe një gamë të pasur produktesh të
+              ëmbla për çdo shije.
             </p>
             <div className="flex space-x-4">
               <Link
@@ -141,12 +144,10 @@ export default function Footer() {
             <h4 className="mb-6 bg-gradient-to-r from-rose-600 to-rose-500 bg-clip-text text-lg font-semibold text-transparent">
               Oraret
             </h4>
-            <ul className="space-y-4">
-              <li>
-                <span className="text-gray-400">Monday - Sunday</span>
-                <p className="text-white">7:00 AM - 10:00 PM</p>
-              </li>
-            </ul>
+            <div className="space-y-2">
+              <span className="text-gray-400">E Hënë - E Dielë</span>
+              <p className="text-white">07:00 - 22:00</p>
+            </div>
           </div>
         </div>
 
@@ -154,7 +155,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="text-sm text-gray-400">
-              © {year ?? ''} Pastiçeri Lika. All rights reserved.
+              © {year ?? ""} Pastiçeri Lika. All rights reserved.
             </p>
           </div>
         </div>

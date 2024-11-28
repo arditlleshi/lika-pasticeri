@@ -111,7 +111,7 @@ export const categoryShowcase = [
   },
   {
     name: "Torta",
-    searchName: "Premium",
+    searchName: "Breads",
     description:
       "Torta elegante dhe të shijshme perfekte për çdo rast të veçantë",
     image: bakery3,

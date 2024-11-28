@@ -1,10 +1,10 @@
-import { Clock, Award, Users, Cake } from "lucide-react";
+import { Cake, Clock, Users } from "lucide-react";
 
 const years = new Date().getFullYear() - 1995;
 
 export const stats = [
   { icon: Clock, label: "Vjet Eksperiencë", value: years + "+" },
-  { icon: Award, label: "Çmime Fitore", value: "15+" },
+  // { icon: Award, label: "Çmime Fitore", value: "15+" },
   { icon: Users, label: "Konsumatorë të Lumtur", value: "100k+" },
   { icon: Cake, label: "Produkte të Bëra Çdo Ditë", value: "1000+" },
 ];
@@ -16,7 +16,7 @@ export const locations = [
       "Dyqani ynë kryesor, ku filloi historia e Pastiçeri Lika. Ky vendndodhje përmban pjekurinë dhe kafenenë kryesore tonë, duke shërbyer pastërtia dhe kafe të freskëta çdo ditë.",
     image:
       "https://images.unsplash.com/photo-1564759298141-cef86f51d4d4?auto=format&fit=crop&q=80",
-    mapUrl: "https://maps.google.com/?q=41.3275,19.8187",
+    mapUrl: "https://maps.app.goo.gl/eBS9FvaDsihGuDQ3A",
   },
   {
     name: "Pallatet Çabej",
@@ -24,7 +24,7 @@ export const locations = [
       "E vendosur në lagjen më të njohur të Tiranës, kjo vendndodhje moderne kombinon preferencat tradicionale me kulturën bashkëkohore të kafenesë.",
     image:
       "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&q=80",
-    mapUrl: "https://maps.google.com/?q=41.3186,19.8145",
+    mapUrl: "https://maps.app.goo.gl/A8BgK8AuAgZH8SZM7",
   },
   {
     name: "Rruga Xhanfize Keko",
@@ -32,7 +32,7 @@ export const locations = [
       "E vendosur në lagjen më të njohur të Tiranës, kjo vendndodhje moderne kombinon preferencat tradicionale me kulturën bashkëkohore të kafenesë.",
     image:
       "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?auto=format&fit=crop&q=80",
-    mapUrl: "https://maps.google.com/?q=41.3186,19.8145",
+    mapUrl: "https://maps.app.goo.gl/iuny9Zan5aaVMDZA6",
   },
 ];
 

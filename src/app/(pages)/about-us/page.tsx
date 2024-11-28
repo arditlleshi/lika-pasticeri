@@ -146,7 +146,9 @@ export default function About() {
               Dyqanet tona
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Visit us at any of our locations to experience the perfect blend of tradition and innovation in every bite.
+              Vizitoni në një nga dyqanet tona për të eksperimentuar me
+              pjekurinë e parë në kombinim të traditës dhe inovacionit në
+              çdo shije.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

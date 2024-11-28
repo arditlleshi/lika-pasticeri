@@ -22,6 +22,7 @@ export function NavLink({
   return (
     <Link
       href={to}
+      scroll={false}
       onClick={onClick}
       className={`${className} ${isActive ? activeClassName : ""}`}
     >

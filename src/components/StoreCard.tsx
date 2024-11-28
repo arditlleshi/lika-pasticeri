@@ -3,6 +3,7 @@
 import { MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 interface StoreCardProps {
   name: string;
@@ -41,7 +42,7 @@ export default function StoreCard({
           viewport={{ once: true }}
           className="absolute top-4 right-4"
         >
-          <a
+          <Link
             href={mapUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -49,24 +50,15 @@ export default function StoreCard({
           >
             <MapPin className="h-4 w-4 text-rose-500 group-hover/badge:text-white transition-colors" />
             <span className="text-sm font-medium text-rose-500 group-hover/badge:text-white transition-colors">
-              View on Map
+              Shiko në Hartë
             </span>
-          </a>
+          </Link>
         </motion.div>
 
         {/* Floating Info Card */}
         <div className="absolute left-4 right-4 bottom-4 bg-white/90 backdrop-blur-md rounded-xl p-4 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
           <h3 className="text-lg font-semibold text-gray-900 mb-2">{name}</h3>
           <p className="text-sm text-gray-600">{description}</p>
-          <a
-            href={mapUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 inline-flex items-center text-rose-500 hover:text-rose-600 text-sm font-medium"
-          >
-            <MapPin className="h-4 w-4 mr-1" />
-            Get Directions
-          </a>
         </div>
       </div>
     </motion.div>

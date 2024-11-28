@@ -78,9 +78,7 @@ export default async function GalleryPage({
       </div>
 
       {/* Filters */}
-      <Suspense
-        fallback={<div className="py-4 text-center">Loading filters...</div>}
-      >
+      <Suspense fallback={<LoadingUI />}>
         <GalleryFilters
           categories={categories}
           selectedCategory={selectedCategory}

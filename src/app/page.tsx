@@ -43,7 +43,7 @@ export default function Home() {
       </section>
 
       {/* Baklava Showcase Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800 py-28">
+      <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800 py-36">
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex flex-col items-center gap-12 lg:flex-row">
             <div className="space-y-10 lg:w-1/2">
@@ -126,10 +126,10 @@ export default function Home() {
                   href={`/gallery?category=${encodeURIComponent(
                     categoryShowcase[0].searchName
                   )}`}
-                  className="inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
+                  className="group inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
                 >
                   Shikoni të Gjitha Produktet{" "}
-                  <ChevronRight className="ml-1 h-4 w-4" />
+                  <ChevronRight className="ml-1 h-4 w-4 transform transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
@@ -161,10 +161,10 @@ export default function Home() {
                   href={`/gallery?category=${encodeURIComponent(
                     categoryShowcase[1].searchName
                   )}`}
-                  className="inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
+                  className="group inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
                 >
                   Shikoni të Gjitha Produktet{" "}
-                  <ChevronRight className="ml-1 h-4 w-4" />
+                  <ChevronRight className="ml-1 h-4 w-4 transform transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
@@ -196,10 +196,10 @@ export default function Home() {
                   href={`/gallery?category=${encodeURIComponent(
                     categoryShowcase[2].searchName
                   )}`}
-                  className="inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
+                  className="group inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
                 >
                   Shikoni të Gjitha Produktet{" "}
-                  <ChevronRight className="ml-1 h-4 w-4" />
+                  <ChevronRight className="lucide lucide-chevron-right ml-1 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>

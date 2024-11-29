@@ -1,3 +1,5 @@
+'use client'
+
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 
@@ -13,10 +15,9 @@ export default function CategoryLink({ searchName, children }: CategoryLinkProps
         pathname: "/gallery",
         query: { category: encodeURIComponent(searchName) },
       }}
-      // scroll={false}
-      // onClick={() => {
-      //   window.scrollTo({ top: 0, behavior: "smooth" });
-      // }}
+      onClick={() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
       className="group inline-flex items-center text-rose-600 transition-colors hover:text-rose-700"
     >
       {children}

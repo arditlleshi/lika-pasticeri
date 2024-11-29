@@ -1,10 +1,10 @@
-import { Cake, Clock, Users } from "lucide-react";
+import { Award, Cake, Clock, Users } from "lucide-react";
 
 const years = new Date().getFullYear() - 1995;
 
 export const stats = [
   { icon: Clock, label: "Vjet Eksperiencë", value: years + "+" },
-  // { icon: Award, label: "Çmime Fitore", value: "15+" },
+  { icon: Award, label: "Çmime Fitore", value: "15+" },
   { icon: Users, label: "Konsumatorë të Lumtur", value: "100k+" },
   { icon: Cake, label: "Produkte të Bëra Çdo Ditë", value: "1000+" },
 ];

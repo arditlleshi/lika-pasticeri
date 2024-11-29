@@ -1,6 +1,8 @@
 import StoreCard from "@/components/StoreCard";
 import Image from "next/image";
-import { locations, stats, timeline } from "../../../data/about-data";
+import { locations, timeline } from "../../../data/about-data";
+import StatSection from "./StatSection";
+
 
 export default function About() {
   return (
@@ -33,26 +35,7 @@ export default function About() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-gradient-to-r from-rose-50 to-white py-16">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-3">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="transform text-center transition-transform duration-300 hover:scale-105"
-              >
-                <div className="rounded-2xl bg-white p-6 shadow-lg transition-shadow hover:shadow-xl">
-                  <stat.icon className="mx-auto mb-4 h-8 w-8 text-rose-600" />
-                  <div className="mb-2 text-3xl font-bold text-gray-900">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-600">{stat.label}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StatSection />
 
       {/* Timeline Section */}
       <section className="bg-white py-24">
@@ -139,19 +122,19 @@ export default function About() {
       </section>
 
       {/* Locations Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-serif font-bold text-gray-900 mb-4">
+      <section className="bg-gray-50 py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 font-serif text-4xl font-bold text-gray-900">
               Dyqanet tona
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="mx-auto max-w-2xl text-gray-600">
               Vizitoni në një nga dyqanet tona për të eksperimentuar me
-              pjekurinë e parë në kombinim të traditës dhe inovacionit në
-              çdo shije.
+              pjekurinë e parë në kombinim të traditës dhe inovacionit në çdo
+              shije.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {locations.map((location, index) => (
               <StoreCard key={index} {...location} />
             ))}

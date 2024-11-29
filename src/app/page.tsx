@@ -87,7 +87,7 @@ export default function Home() {
       </section>
 
       {/* Category Showcase Section */}
-      <section className="bg-white py-24">
+      <section className="bg-white py-36">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-16 text-center">
             <h2 className="mb-4 font-serif text-4xl font-bold text-gray-900">
@@ -99,7 +99,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-28">
+          <div className="grid grid-cols-1 gap-36">
             {categoryShowcase.map((category, index) => (
               <div
                 key={category.name}

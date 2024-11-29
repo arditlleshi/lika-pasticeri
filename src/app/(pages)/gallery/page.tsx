@@ -16,6 +16,7 @@ interface GalleryPageProps {
 export default async function GalleryPage({
   searchParams,
 }: GalleryPageProps) {
+  // await new Promise((resolve) => setTimeout(resolve, 2000));
   const params = await searchParams;
 
   // Get params after resolution

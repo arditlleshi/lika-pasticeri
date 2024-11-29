@@ -53,19 +53,22 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               <Link
-                href="#"
+                href="https://www.instagram.com/lika_pasticeri"
+                target="_blank"
                 className="text-gray-400 transition-colors hover:text-rose-500"
               >
                 <Instagram className="h-6 w-6" />
               </Link>
               <Link
-                href="#"
+                href="https://www.facebook.com/@lika.pasticeri"
+                target="_blank"
                 className="text-gray-400 transition-colors hover:text-rose-500"
               >
                 <Facebook className="h-6 w-6" />
               </Link>
               <Link
-                href="#"
+                href="https://www.tiktok.com/@lika_pasticeri"
+                target="_blank"
                 className="text-gray-400 transition-colors hover:text-rose-500"
               >
                 <TikTokIcon />

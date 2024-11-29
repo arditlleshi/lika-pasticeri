@@ -1,9 +1,9 @@
-import { Suspense } from "react";
+import LoadingUI from "@/app/loading";
 import { categories, products } from "@/data/gallery-data";
 import { Product } from "@/data/types";
-import GalleryGrid from "./GalleryGrid";
+import { Suspense } from "react";
 import GalleryFilters from "./GalleryFilters";
-import LoadingUI from "@/app/loading";
+import GalleryGrid from "./GalleryGrid";
 
 interface GalleryPageProps {
   searchParams: Promise<{
@@ -16,7 +16,6 @@ interface GalleryPageProps {
 export default async function GalleryPage({
   searchParams,
 }: GalleryPageProps) {
-  // Await searchParams
   const params = await searchParams;
 
   // Get params after resolution

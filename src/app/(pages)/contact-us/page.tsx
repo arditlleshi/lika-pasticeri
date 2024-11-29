@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 
 export default function Contact() {
+
   return (
     <div className="pt-20">
       {/* Hero Section */}

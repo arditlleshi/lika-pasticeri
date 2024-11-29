@@ -1,14 +1,11 @@
-"use client";
 
+import { handleSubmit } from "@/data/actions";
 import { Send } from "lucide-react";
+import Form from 'next/form';
 
-export default function ContactForm() {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-  };
-
+export default function ContactForm(){
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 text-gray-700">
+    <Form action={handleSubmit} className="space-y-4 text-gray-700">
       <div>
         <label
           htmlFor="fullName"
@@ -79,6 +76,6 @@ export default function ContactForm() {
         Dërgo Mesazhin
         <Send className="h-5 w-5" />
       </button>
-    </form>
+    </Form>
   );
 }

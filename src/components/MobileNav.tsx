@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "./NavLink";
+import LanguageToggle from "./LanguageToggle";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -51,6 +52,7 @@ export default function MobileNav({ isOpen, onClose, navLinks }: MobileNavProps)
                   </motion.div>
                 </NavLink>
               ))}
+              <LanguageToggle />
             </nav>
           </div>
         </motion.div>

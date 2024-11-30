@@ -28,8 +28,8 @@ function ImageShowcase({ images }: { images: { url: StaticImageData; alt: string
   return (
     <div className="relative aspect-[4/3] w-98 lg:w-1/2">
       {/* Gradient Overlays */}
-      <div className="absolute inset-0 rotate-6 transform rounded-3xl bg-gradient-to-r from-rose-600/20 to-rose-500/20" />
-      <div className="absolute inset-0 -rotate-6 transform rounded-3xl bg-gradient-to-r from-rose-600/20 to-rose-500/20" />
+      <div className="absolute inset-0 w-98 rotate-6 transform rounded-3xl bg-gradient-to-r from-rose-600/20 to-rose-500/20" />
+      <div className="absolute inset-0 w-98 -rotate-6 transform rounded-3xl bg-gradient-to-r from-rose-600/20 to-rose-500/20" />
 
       {/* Image Container */}
       <div className="relative h-full overflow-hidden rounded-3xl shadow-2xl">

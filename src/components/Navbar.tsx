@@ -8,6 +8,7 @@ import logo from "../assets/logo/red-logo.png";
 import MenuButton from "./MenuButton";
 import MobileNav from "./MobileNav";
 import { NavLink } from "./NavLink";
+import LanguageToggle from "./LanguageToggle";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = usePathname();
@@ -73,6 +74,7 @@ const Navbar = () => {
                   <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-rose-600 to-rose-500 transition-all duration-300 ease-out group-hover:w-full"></div>
                 </NavLink>
               ))}
+              <LanguageToggle />
             </div>
           </div>
 

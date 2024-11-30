@@ -1,3 +1,4 @@
+// Navbar.tsx
 "use client";
 
 import Image from "next/image";
@@ -5,10 +6,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState } from "react";
 import logo from "../assets/logo/red-logo.png";
+import LanguageToggle from "./LanguageToggle";
 import MenuButton from "./MenuButton";
 import MobileNav from "./MobileNav";
 import { NavLink } from "./NavLink";
-import LanguageToggle from "./LanguageToggle";
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = usePathname();
@@ -74,7 +76,9 @@ const Navbar = () => {
                   <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-gradient-to-r from-rose-600 to-rose-500 transition-all duration-300 ease-out group-hover:w-full"></div>
                 </NavLink>
               ))}
-              <LanguageToggle />
+              <div className="flex items-center gap-4">
+                <LanguageToggle />
+              </div>
             </div>
           </div>
 
@@ -86,11 +90,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Navigation Menu */}
-      <MobileNav
-        isOpen={isOpen}
-        onClose={handleLinkClick}
-        navLinks={navLinks}
-      />
+      <MobileNav isOpen={isOpen} onClose={handleLinkClick} navLinks={navLinks} />
     </nav>
   );
 };

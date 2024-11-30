@@ -1,6 +1,7 @@
+// MobileNav.tsx
 import { AnimatePresence, motion } from "framer-motion";
-import { NavLink } from "./NavLink";
 import LanguageToggle from "./LanguageToggle";
+import { NavLink } from "./NavLink";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -52,8 +53,11 @@ export default function MobileNav({ isOpen, onClose, navLinks }: MobileNavProps)
                   </motion.div>
                 </NavLink>
               ))}
-              <LanguageToggle />
             </nav>
+            <div className="mt-4 space-y-4">
+              {/* LanguageToggle with Mobile Styling */}
+              <LanguageToggle isMobile={true} onCloseMobileNav={onClose} />
+            </div>
           </div>
         </motion.div>
       )}

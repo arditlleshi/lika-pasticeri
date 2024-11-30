@@ -1,6 +1,9 @@
-import { motion, AnimatePresence } from "framer-motion";
+// LanguageToggle.tsx
+"use client"; // Ensure this component is client-side rendered
+
+import { AnimatePresence, motion } from "framer-motion";
 import { Globe } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const languages = [
   { code: "sq", label: "AL" },
@@ -51,56 +54,63 @@ const itemVariants = {
   }),
 };
 
-export default function LanguageToggle() {
+interface LanguageToggleProps {
+  isMobile?: boolean;
+  onCloseMobileNav?: () => void; // Optional prop to close MobileNav when a language is selected
+}
+
+export default function LanguageToggle({
+  isMobile = false,
+  onCloseMobileNav,
+}: LanguageToggleProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(languages[0]);
-  const [isMediumScreen, setIsMediumScreen] = useState(() => {
-    if (typeof window !== "undefined") {
-      return window.innerWidth >= 768; // Tailwind's md breakpoint
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMediumScreen(window.innerWidth >= 768);
-    };
-
-    window.addEventListener("resize", handleResize);
-    // Initialize the state
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   const toggleDropdown = () => {
-    if (isMediumScreen) {
-      setIsOpen((prev) => !prev);
-    } else {
-      // Cycle through the languages
+    if (isMobile) {
+      // For mobile, cycle through languages
       const currentIndex = languages.findIndex(
         (lang) => lang.code === selectedLang.code
       );
       const nextIndex = (currentIndex + 1) % languages.length;
       setSelectedLang(languages[nextIndex]);
+      if (onCloseMobileNav) onCloseMobileNav(); // Close MobileNav if provided
+    } else {
+      setIsOpen((prev) => !prev);
     }
   };
 
-  const handleLanguageSelect = (language: { code: string; label: string }) => {
+  const handleLanguageSelect = (language: typeof languages[0]) => {
     setSelectedLang(language);
     setIsOpen(false);
+    if (onCloseMobileNav) onCloseMobileNav(); // Close MobileNav if provided
   };
 
-  return (
+  return isMobile ? (
+    // Mobile Version
+    <motion.button
+      whileTap={{ scale: 0.95 }}
+      onClick={toggleDropdown}
+      className="w-full px-4 py-3 rounded-xl flex items-center justify-between gap-2 transition-all duration-300 group hover:bg-rose-50"
+    >
+      <span className="text-base font-medium">Language</span>
+      <div className="flex items-center space-x-2">
+        <Globe className="h-5 w-5 transition-transform group-hover:scale-110" />
+        <span className="font-medium">{selectedLang.label}</span>
+      </div>
+    </motion.button>
+  ) : (
+    // Desktop Version
     <div className="relative">
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        
         onClick={toggleDropdown}
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-controls="language-dropdown"
-        className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-gray-200/80 bg-gradient-to-r from-white/80 to-white px-4 py-2 shadow-sm transition-all duration-300 hover:shadow-md"
+        className="group flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-white/80 to-white border border-gray-200/80 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden"
       >
         {/* Background Gradient on Hover */}
         <motion.div
@@ -123,31 +133,29 @@ export default function LanguageToggle() {
           }}
           className="relative"
         >
-          <Globe className="h-4 w-4 text-rose-500" />
+          <Globe className="w-4 h-4 text-rose-500" />
         </motion.div>
 
         {/* Selected Language Label */}
-        <span className="relative w-5 text-sm font-medium text-gray-700 transition-colors group-hover:text-rose-600">
+        <span className="relative text-sm font-medium w-5 text-gray-700 group-hover:text-rose-600 transition-colors">
           {selectedLang.label}
         </span>
 
-        {/* Dropdown Arrow (Visible Only on Medium and Larger Screens) */}
-        {isMediumScreen && (
-          <motion.span
-            animate={{
-              rotate: isOpen ? 180 : 0,
-            }}
-            transition={{ duration: 0.3 }}
-            className="relative ml-1 text-xs text-black"
-          >
-            ▼
-          </motion.span>
-        )}
+        {/* Dropdown Arrow */}
+        <motion.span
+          animate={{
+            rotate: isOpen ? 180 : 0,
+          }}
+          transition={{ duration: 0.3 }}
+          className="relative ml-1 text-xs text-black"
+        >
+          ▼
+        </motion.span>
       </motion.button>
 
-      {/* Dropdown Menu (Visible Only on Medium and Larger Screens) */}
+      {/* Dropdown Menu */}
       <AnimatePresence>
-        {isOpen && isMediumScreen && (
+        {isOpen && (
           <motion.div
             variants={dropdownVariants}
             initial="hidden"

@@ -2,30 +2,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Globe } from "lucide-react";
 import { useEffect, useState } from "react";
 
-// Custom hook to detect screen size
-function useIsLargeScreen() {
-  const [isLargeScreen, setIsLargeScreen] = useState(() => {
-    if (typeof window !== "undefined") {
-      return window.innerWidth >= 1024; // Tailwind's lg breakpoint
-    }
-    return false;
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLargeScreen(window.innerWidth >= 1024);
-    };
-
-    window.addEventListener("resize", handleResize);
-    // Initialize the state
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return isLargeScreen;
-}
-
 const languages = [
   { code: "sq", label: "AL" },
   { code: "en", label: "EN" },
@@ -78,10 +54,27 @@ const itemVariants = {
 export default function LanguageToggle() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(languages[0]);
-  const isLargeScreen = useIsLargeScreen();
+  const [isMediumScreen, setIsMediumScreen] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth >= 768; // Tailwind's md breakpoint
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMediumScreen(window.innerWidth >= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    // Initialize the state
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const toggleDropdown = () => {
-    if (isLargeScreen) {
+    if (isMediumScreen) {
       setIsOpen((prev) => !prev);
     } else {
       // Cycle through the languages
@@ -104,8 +97,12 @@ export default function LanguageToggle() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={toggleDropdown}
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
+        aria-controls="language-dropdown"
         className="group relative flex items-center gap-2 overflow-hidden rounded-full border border-gray-200/80 bg-gradient-to-r from-white/80 to-white px-4 py-2 shadow-sm transition-all duration-300 hover:shadow-md"
       >
+        {/* Background Gradient on Hover */}
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-rose-50 to-rose-100/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           transition={{
@@ -113,6 +110,7 @@ export default function LanguageToggle() {
           }}
         />
 
+        {/* Globe Icon with Rotation Animation */}
         <motion.div
           animate={{
             rotate: isOpen ? 360 : 0,
@@ -128,11 +126,13 @@ export default function LanguageToggle() {
           <Globe className="h-4 w-4 text-rose-500" />
         </motion.div>
 
+        {/* Selected Language Label */}
         <span className="relative w-5 text-sm font-medium text-gray-700 transition-colors group-hover:text-rose-600">
           {selectedLang.label}
         </span>
 
-        {isLargeScreen && (
+        {/* Dropdown Arrow (Visible Only on Medium and Larger Screens) */}
+        {isMediumScreen && (
           <motion.span
             animate={{
               rotate: isOpen ? 180 : 0,
@@ -145,14 +145,17 @@ export default function LanguageToggle() {
         )}
       </motion.button>
 
+      {/* Dropdown Menu (Visible Only on Medium and Larger Screens) */}
       <AnimatePresence>
-        {isOpen && isLargeScreen && (
+        {isOpen && isMediumScreen && (
           <motion.div
             variants={dropdownVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute right-0 mt-2 w-36 rounded-xl border border-gray-100 bg-white/90 py-2 shadow-lg backdrop-blur-md"
+            id="language-dropdown"
+            role="menu"
+            className="absolute right-0 mt-2 w-36 rounded-xl border border-gray-100 bg-white py-2 shadow-lg backdrop-blur-md"
           >
             {languages.map((lang, i) => (
               <motion.button
@@ -166,6 +169,7 @@ export default function LanguageToggle() {
                   x: 4,
                 }}
                 onClick={() => handleLanguageSelect(lang)}
+                role="menuitem"
                 className={`relative w-full px-4 py-2.5 text-sm ${
                   selectedLang.code === lang.code
                     ? "font-medium text-rose-600"

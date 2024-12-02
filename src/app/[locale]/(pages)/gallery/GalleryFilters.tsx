@@ -1,12 +1,11 @@
-// src/components/GalleryFilters.tsx
-
 "use client";
 
-import { Search, X } from "lucide-react"; // Import the X icon
-import { useRouter, useSearchParams } from "next/navigation";
+import { Search, X } from "lucide-react"; 
+import { useSearchParams } from "next/navigation";
 import FilterButton from "./FilterButton";
 import SubcategoryButton from "./SubcategoryButton";
 import { useRef, useState, useEffect } from "react";
+import { useRouter } from "@/i18n/routing";
 
 interface GalleryFiltersProps {
   categories: string[];

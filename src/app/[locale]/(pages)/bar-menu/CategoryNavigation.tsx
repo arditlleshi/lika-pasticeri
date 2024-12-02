@@ -1,11 +1,9 @@
-// src/components/CategoryNavigation.tsx
-
 "use client";
 
 import { useEffect, useRef } from "react";
 import { menuBarCategories } from "../../../../data/bar-menu-data";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
-
+import { useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "@/i18n/routing";
 interface CategoryNavigationProps {
   selectedCategoryId: string;
 }

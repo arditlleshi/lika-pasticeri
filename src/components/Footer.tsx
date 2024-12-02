@@ -1,7 +1,7 @@
 "use client";
 
 import { Cake, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 

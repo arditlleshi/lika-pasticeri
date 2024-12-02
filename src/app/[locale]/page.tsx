@@ -1,6 +1,5 @@
-// pages/index.jsx or pages/index.tsx
 import { ChevronRight } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import {
   categoryShowcase,
   features,
@@ -12,7 +11,7 @@ import {
 
 import ImageShowcase from "../../components/ImageShowcase";
 import HeroImages from "../../components/HeroImages";
-import CategoryLink from "../../components/CategoryLink"; // Import the new component
+import CategoryLink from "../../components/CategoryLink";
 
 export default function Home() {
   return (

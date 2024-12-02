@@ -1,4 +1,4 @@
-import LoadingUI from "@/app/loading";
+import LoadingUI from "@/app/[locale]/loading";
 import { categories, products } from "@/data/gallery-data";
 import { Product } from "@/data/types";
 import { Suspense } from "react";

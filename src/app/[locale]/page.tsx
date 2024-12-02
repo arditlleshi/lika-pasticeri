@@ -8,11 +8,11 @@ import {
   category1Images,
   category2Images,
   category3Images,
-} from "../data/home-data";
+} from "../../data/home-data";
 
-import ImageShowcase from "../components/ImageShowcase";
-import HeroImages from "../components/HeroImages";
-import CategoryLink from "../components/CategoryLink"; // Import the new component
+import ImageShowcase from "../../components/ImageShowcase";
+import HeroImages from "../../components/HeroImages";
+import CategoryLink from "../../components/CategoryLink"; // Import the new component
 
 export default function Home() {
   return (

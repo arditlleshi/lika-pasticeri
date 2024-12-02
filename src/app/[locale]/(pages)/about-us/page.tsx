@@ -1,6 +1,6 @@
 import StoreCard from "@/components/StoreCard";
 import Image from "next/image";
-import { locations, timeline } from "../../../data/about-data";
+import { locations, timeline } from "../../../../data/about-data";
 import StatSection from "./StatSection";
 
 

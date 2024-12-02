@@ -3,7 +3,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { menuBarCategories } from "../../../data/bar-menu-data";
+import { menuBarCategories } from "../../../../data/bar-menu-data";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 interface CategoryNavigationProps {

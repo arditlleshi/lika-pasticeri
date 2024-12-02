@@ -1,6 +1,6 @@
 // src/app/bar-menu/page.tsx
 
-import { menuBarCategories, menuBarItems } from "../../../data/bar-menu-data";
+import { menuBarCategories, menuBarItems } from "../../../../data/bar-menu-data";
 import Image from "next/image";
 import CategoryNavigation from "./CategoryNavigation";
 

@@ -1,0 +1,14 @@
+{
+  "navbar": {
+    "home": "Home",
+    "gallery": "Gallery",
+    "barMenu": "Bar Menu",
+    "aboutUs": "About Us",
+    "contact": "Contact"
+  },
+  "language": "Language",
+  "footer": {
+    "copyright": "© 2024 Pasticeri Lika. All rights reserved."
+  },
+  "welcomeMessage": "Welcome to Pasticeri Lika!"
+}

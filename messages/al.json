@@ -1,0 +1,14 @@
+{
+  "navbar": {
+    "home": "Kreu",
+    "gallery": "Galeria",
+    "barMenu": "Bar Menu",
+    "aboutUs": "Rreth Nesh",
+    "contact": "Kontakt"
+  },
+  "language": "Gjuha",
+  "footer": {
+    "copyright": "© 2024 Pasticeri Lika. Të gjitha të drejtat e rezervuara."
+  },
+  "welcomeMessage": "Mirë se vini në Pasticeri Lika!"
+}

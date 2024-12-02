@@ -24,21 +24,19 @@ export const metadata: Metadata = {
   title: "Pasticeri Lika",
   description: "Delicious products from Pasticeri Lika.",
   icons: {
-    icon: [
-      { url: "/icon", type: "image/png" },
-    ],
+    icon: [{ url: "/icon", type: "image/png" }],
   },
 };
 
 export default async function RootLayout({
   children,
-  params: { locale },
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-  params: {
-    locale: string;
-  };
-}>) {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
   if (!routing.locales.includes(locale as "al" | "en")) {
     notFound();
   }

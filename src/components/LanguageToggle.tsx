@@ -1,9 +1,8 @@
-// LanguageToggle.tsx
-"use client"; // Ensure this component is client-side rendered
+"use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useAnimation } from "framer-motion";
 import { Globe } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const languages = [
   { code: "sq", label: "AL" },
@@ -56,7 +55,7 @@ const itemVariants = {
 
 interface LanguageToggleProps {
   isMobile?: boolean;
-  onCloseMobileNav?: () => void; // Optional prop to close MobileNav when a language is selected
+  onCloseMobileNav?: () => void;
 }
 
 export default function LanguageToggle({
@@ -66,6 +65,17 @@ export default function LanguageToggle({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState(languages[0]);
 
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isMobile) {
+      controls.start({
+        rotate: 360,
+        transition: { duration: 0.5, ease: "easeInOut" },
+      }).then(() => controls.set({ rotate: 0 }));
+    }
+  }, [selectedLang, isMobile, controls]);
+
   const toggleDropdown = () => {
     if (isMobile) {
       // For mobile, cycle through languages
@@ -74,7 +84,6 @@ export default function LanguageToggle({
       );
       const nextIndex = (currentIndex + 1) % languages.length;
       setSelectedLang(languages[nextIndex]);
-      if (onCloseMobileNav) onCloseMobileNav(); // Close MobileNav if provided
     } else {
       setIsOpen((prev) => !prev);
     }
@@ -83,7 +92,7 @@ export default function LanguageToggle({
   const handleLanguageSelect = (language: typeof languages[0]) => {
     setSelectedLang(language);
     setIsOpen(false);
-    if (onCloseMobileNav) onCloseMobileNav(); // Close MobileNav if provided
+    if (onCloseMobileNav) onCloseMobileNav(); // Close MobileNav if provided (only for desktop dropdown)
   };
 
   return isMobile ? (
@@ -95,8 +104,10 @@ export default function LanguageToggle({
     >
       <span className="text-base font-medium">Language</span>
       <div className="flex items-center space-x-2">
-        <Globe className="h-5 w-5 transition-transform group-hover:scale-110" />
-        <span className="font-medium">{selectedLang.label}</span>
+        <motion.div animate={controls} className="flex items-center">
+          <Globe className="h-5 w-5 transition-transform group-hover:scale-110" />
+        </motion.div>
+        <span className="font-medium w-6">{selectedLang.label}</span>
       </div>
     </motion.button>
   ) : (
@@ -105,7 +116,6 @@ export default function LanguageToggle({
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        
         onClick={toggleDropdown}
         aria-haspopup="menu"
         aria-expanded={isOpen}

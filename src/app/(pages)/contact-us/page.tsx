@@ -82,16 +82,8 @@ export default function Contact() {
                 </h3>
                 <div className="space-y-2">
                   <div className="flex justify-between text-gray-600">
-                    <span>E Hënë - E Premte</span>
-                    <span>7:00 AM - 8:00 PM</span>
-                  </div>
-                  <div className="flex justify-between text-gray-600">
-                    <span>E Shtunë</span>
-                    <span>8:00 AM - 9:00 PM</span>
-                  </div>
-                  <div className="flex justify-between text-gray-600">
-                    <span>E Diel</span>
-                    <span>8:00 AM - 7:00 PM</span>
+                    <span>E Hënë - E Dielë</span>
+                    <span>07:00 - 22:00</span>
                   </div>
                 </div>
               </div>
